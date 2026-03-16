@@ -36,3 +36,16 @@ body {
 .animate-fade-in {
   animation: fadeIn 0.8s ease-out;
 }
+
+@keyframes kenBurns {
+  0% {
+    transform: scale(1) translate(0, 0);
+  }
+  100% {
+    transform: scale(1.08) translate(-1%, -1%);
+  }
+}
+
+.animate-ken-burns {
+  animation: kenBurns 7s ease-out forwards;
+}
