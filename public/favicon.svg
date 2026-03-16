@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <rect width="128" height="128" fill="white" rx="8"/>
+  <text x="6" y="52" font-family="Georgia, 'Times New Roman', serif" font-size="52" font-weight="bold" fill="#1B3A5C">G</text>
+  <text x="6" y="52" font-family="Georgia, 'Times New Roman', serif" font-size="22" font-weight="normal" fill="#999999" dx="38">ABINET</text>
+  <text x="6" y="80" font-family="Georgia, 'Times New Roman', serif" font-size="52" font-weight="bold" fill="#1B3A5C">E</text>
+  <text x="6" y="80" font-family="Georgia, 'Times New Roman', serif" font-size="22" font-weight="normal" fill="#999999" dx="32">STUDIS</text>
+  <text x="6" y="108" font-family="Georgia, 'Times New Roman', serif" font-size="52" font-weight="bold" fill="#1B3A5C">E</text>
+  <text x="6" y="108" font-family="Georgia, 'Times New Roman', serif" font-size="22" font-weight="normal" fill="#999999" dx="32">CONÒMICS</text>
+</svg>
