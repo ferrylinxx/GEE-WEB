@@ -7,6 +7,12 @@ export const metadata = {
   description:
     "Política de cookies del lloc web de Gabinet Estudis Econòmics (GLLG). Informació sobre les galetes que utilitzem i com gestionar-les.",
   alternates: { canonical: "https://geeconomics.com/politica-cookies" },
+  openGraph: {
+    title: "Política de Cookies | Gabinet Estudis Econòmics",
+    description:
+      "Informació sobre les galetes que utilitzem i com gestionar-les.",
+    url: "https://geeconomics.com/politica-cookies",
+  },
 };
 
 export default function PoliticaCookiesPage() {

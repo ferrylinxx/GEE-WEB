@@ -1,13 +1,26 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useCallback, useEffect } from "react";
 import Link from "next/link";
+import Script from "next/script";
 import ScrollReveal from "./ScrollReveal";
+
+declare global {
+  interface Window {
+    grecaptcha: {
+      ready: (cb: () => void) => void;
+      execute: (siteKey: string, options: { action: string }) => Promise<string>;
+    };
+  }
+}
+
+const RECAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY ?? "";
 
 export default function Contacte() {
   const [acceptPrivacy, setAcceptPrivacy] = useState(false);
   const [acceptComms, setAcceptComms] = useState(false);
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+  const [recaptchaLoaded, setRecaptchaLoaded] = useState(false);
   const [formData, setFormData] = useState({
     nom: "",
     cognom: "",
@@ -21,16 +34,49 @@ export default function Contacte() {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
+  // Hide reCAPTCHA badge with CSS (disclosed in privacy policy)
+  useEffect(() => {
+    const style = document.createElement("style");
+    style.textContent = ".grecaptcha-badge { visibility: hidden !important; }";
+    document.head.appendChild(style);
+    return () => { document.head.removeChild(style); };
+  }, []);
+
+  const getRecaptchaToken = useCallback(async (): Promise<string> => {
+    if (!recaptchaLoaded || !window.grecaptcha) return "";
+    return new Promise((resolve) => {
+      window.grecaptcha.ready(async () => {
+        try {
+          const token = await window.grecaptcha.execute(RECAPTCHA_SITE_KEY, {
+            action: "contact_form",
+          });
+          resolve(token);
+        } catch {
+          resolve("");
+        }
+      });
+    });
+  }, [recaptchaLoaded]);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("sending");
     try {
+      const recaptchaToken = await getRecaptchaToken();
+
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...formData, acceptComms }),
+        body: JSON.stringify({ ...formData, acceptComms, recaptchaToken }),
       });
-      if (!res.ok) throw new Error();
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        if (data.error === "Verificació anti-spam fallida.") {
+          setStatus("error");
+          return;
+        }
+        throw new Error();
+      }
       setStatus("success");
       setFormData({ nom: "", cognom: "", email: "", empresa: "", telefon: "", missatge: "" });
       setAcceptPrivacy(false);
@@ -42,6 +88,14 @@ export default function Contacte() {
 
   return (
     <section id="contacte">
+      {RECAPTCHA_SITE_KEY && (
+        <Script
+          src={`https://www.google.com/recaptcha/api.js?render=${RECAPTCHA_SITE_KEY}`}
+          strategy="lazyOnload"
+          onLoad={() => setRecaptchaLoaded(true)}
+        />
+      )}
+
       {/* Premium hero header */}
       <div className="relative py-28 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-[var(--color-primary)] via-[var(--color-primary-dark)] to-[#071825]" />
@@ -160,6 +214,16 @@ export default function Contacte() {
                   <div className="absolute bottom-4 left-4 w-8 h-8 border-b-2 border-l-2 border-[var(--color-accent)]/30 rounded-bl-lg" />
                 </div>
 
+                {/* Honeypot field - hidden from users, bots will fill it */}
+                <div className="absolute -left-[9999px]" aria-hidden="true">
+                  <input
+                    type="text"
+                    name="website"
+                    tabIndex={-1}
+                    autoComplete="off"
+                  />
+                </div>
+
                 {status === "success" && (
                   <div className="p-4 bg-green-50 border border-green-200 rounded-lg text-green-800 text-sm">
                     Missatge enviat correctament! Ens posarem en contacte amb tu aviat.
@@ -182,6 +246,7 @@ export default function Contacte() {
                       value={formData.nom}
                       onChange={handleChange}
                       required
+                      maxLength={100}
                       className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[var(--color-accent)] focus:ring-2 focus:ring-[var(--color-accent)]/20 outline-none transition-all bg-[var(--color-bg-light)]/50 hover:bg-[var(--color-bg-light)] focus:bg-white"
                     />
                   </div>
@@ -194,6 +259,7 @@ export default function Contacte() {
                       name="cognom"
                       value={formData.cognom}
                       onChange={handleChange}
+                      maxLength={100}
                       className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[var(--color-accent)] focus:ring-2 focus:ring-[var(--color-accent)]/20 outline-none transition-all bg-[var(--color-bg-light)]/50 hover:bg-[var(--color-bg-light)] focus:bg-white"
                     />
                   </div>
@@ -210,6 +276,7 @@ export default function Contacte() {
                       value={formData.email}
                       onChange={handleChange}
                       required
+                      maxLength={150}
                       className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[var(--color-accent)] focus:ring-2 focus:ring-[var(--color-accent)]/20 outline-none transition-all bg-[var(--color-bg-light)]/50 hover:bg-[var(--color-bg-light)] focus:bg-white"
                     />
                   </div>
@@ -223,6 +290,7 @@ export default function Contacte() {
                       value={formData.empresa}
                       onChange={handleChange}
                       required
+                      maxLength={150}
                       className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[var(--color-accent)] focus:ring-2 focus:ring-[var(--color-accent)]/20 outline-none transition-all bg-[var(--color-bg-light)]/50 hover:bg-[var(--color-bg-light)] focus:bg-white"
                     />
                   </div>
@@ -238,6 +306,9 @@ export default function Contacte() {
                     value={formData.telefon}
                     onChange={handleChange}
                     required
+                    maxLength={20}
+                    pattern="[\d\s\+\-\(\)]{6,20}"
+                    title="Introdueix un número de telèfon vàlid"
                     className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[var(--color-accent)] focus:ring-2 focus:ring-[var(--color-accent)]/20 outline-none transition-all bg-[var(--color-bg-light)]/50 hover:bg-[var(--color-bg-light)] focus:bg-white"
                   />
                 </div>
@@ -252,6 +323,7 @@ export default function Contacte() {
                     onChange={handleChange}
                     required
                     rows={4}
+                    maxLength={5000}
                     className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[var(--color-accent)] focus:ring-2 focus:ring-[var(--color-accent)]/20 outline-none transition-all resize-none bg-[var(--color-bg-light)]/50 hover:bg-[var(--color-bg-light)] focus:bg-white"
                   />
                 </div>
@@ -300,6 +372,18 @@ export default function Contacte() {
                 >
                   {status === "sending" ? "Enviant..." : "Enviar missatge"}
                 </button>
+
+                <p className="text-[10px] text-[var(--color-text-muted)]/60 text-center leading-relaxed">
+                  Aquest lloc està protegit per reCAPTCHA i s&apos;apliquen la{" "}
+                  <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="underline">
+                    Política de Privacitat
+                  </a>{" "}
+                  i els{" "}
+                  <a href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer" className="underline">
+                    Termes de Servei
+                  </a>{" "}
+                  de Google.
+                </p>
               </form>
             </ScrollReveal>
           </div>

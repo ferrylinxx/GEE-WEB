@@ -9,6 +9,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 1.0,
+      images: [
+        `${siteUrl}/images/image1.png`,
+        `${siteUrl}/images/banner2-lleida.jpeg`,
+        `${siteUrl}/images/banner3-eolics.jpeg`,
+      ],
     },
     {
       url: `${siteUrl}/presentacio`,

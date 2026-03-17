@@ -7,6 +7,12 @@ export const metadata = {
   description:
     "Política de privacitat i protecció de dades personals de Gabinet Estudis Econòmics (GLLG) conforme al RGPD i la LOPDGDD.",
   alternates: { canonical: "https://geeconomics.com/politica-privacitat" },
+  openGraph: {
+    title: "Política de Privacitat | Gabinet Estudis Econòmics",
+    description:
+      "Protecció de dades personals conforme al RGPD i la LOPDGDD.",
+    url: "https://geeconomics.com/politica-privacitat",
+  },
 };
 
 export default function PoliticaPrivacitatPage() {

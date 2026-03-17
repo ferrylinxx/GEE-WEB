@@ -38,6 +38,7 @@ export const metadata: Metadata = {
     email: false,
     telephone: false,
   },
+  manifest: "/manifest.json",
   openGraph: {
     type: "website",
     locale: "ca_ES",
@@ -75,14 +76,22 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: siteUrl,
+    languages: {
+      "ca": siteUrl,
+      "x-default": siteUrl,
+    },
   },
   icons: {
     icon: [
-      { url: "/favicon.png", type: "image/png" },
+      { url: "/favicon.ico", sizes: "32x32" },
+      { url: "/favicon.png", type: "image/png", sizes: "192x192" },
+      { url: "/icon-192.png", type: "image/png", sizes: "192x192" },
+      { url: "/icon-512.png", type: "image/png", sizes: "512x512" },
     ],
     apple: [
-      { url: "/apple-icon.png", type: "image/png" },
+      { url: "/apple-icon.png", type: "image/png", sizes: "180x180" },
     ],
+    shortcut: ["/favicon.ico"],
   },
 };
 
@@ -91,7 +100,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const jsonLd = {
+  const jsonLdOrganization = {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "Gabinet Estudis Econòmics",
@@ -122,16 +131,159 @@ export default function RootLayout({
     ],
   };
 
+  const jsonLdLocalBusiness = {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "@id": `${siteUrl}/#localbusiness`,
+    name: "Gabinet Estudis Econòmics",
+    alternateName: "GEE",
+    url: siteUrl,
+    logo: `${siteUrl}/logo.png`,
+    image: `${siteUrl}/opengraph-image`,
+    description:
+      "Consultoria econòmica especialitzada en anàlisi estratègica, impacte econòmic, avaluació urbanística i dictàmens pericials a Barcelona des de 1989.",
+    telephone: "+34932119744",
+    email: "gllg@geeconomics.com",
+    foundingDate: "1989",
+    priceRange: "$$",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "Passatge de Forasté, 4, Bis, Local 7",
+      addressLocality: "Barcelona",
+      postalCode: "08022",
+      addressRegion: "Catalunya",
+      addressCountry: "ES",
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: 41.4133,
+      longitude: 2.1278,
+    },
+    areaServed: [
+      { "@type": "City", name: "Barcelona" },
+      { "@type": "AdministrativeArea", name: "Catalunya" },
+      { "@type": "Country", name: "Espanya" },
+    ],
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Serveis de consultoria econòmica",
+      itemListElement: [
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Anàlisi Estratègica",
+            description:
+              "Anàlisi estratègica de projectes amb rigor i independència per a la presa de decisions informada.",
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Estudis d'Impacte Econòmic",
+            description:
+              "Estudi de l'impacte econòmic d'infraestructures i projectes sobre el territori i la població.",
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Avaluació Urbanística",
+            description:
+              "Avaluació socioeconòmica de temes urbanístics i desenvolupament urbà integral.",
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Valoració d'Intangibles",
+            description:
+              "Valoració d'actius intangibles, marques, patents i propietat intel·lectual.",
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Dictàmens Pericials",
+            description:
+              "Elaboració de dictàmens pericials econòmics per a processos judicials.",
+          },
+        },
+      ],
+    },
+  };
+
+  const jsonLdBreadcrumb = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Inici",
+        item: siteUrl,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Presentació",
+        item: `${siteUrl}/presentacio`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: "Què fem",
+        item: `${siteUrl}/que-fem`,
+      },
+      {
+        "@type": "ListItem",
+        position: 4,
+        name: "Qui som",
+        item: `${siteUrl}/qui-som`,
+      },
+      {
+        "@type": "ListItem",
+        position: 5,
+        name: "Clients",
+        item: `${siteUrl}/clients`,
+      },
+      {
+        "@type": "ListItem",
+        position: 6,
+        name: "Contacte",
+        item: `${siteUrl}/contacte`,
+      },
+    ],
+  };
+
   return (
     <html lang="ca" className="scroll-smooth">
       <head>
         <GoogleAnalytics />
+        <link rel="alternate" hrefLang="ca" href={siteUrl} />
+        <link rel="alternate" hrefLang="x-default" href={siteUrl} />
       </head>
       <body className={`${inter.variable} font-sans antialiased`}>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+            __html: JSON.stringify(jsonLdOrganization).replace(/</g, "\\u003c"),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(jsonLdLocalBusiness).replace(/</g, "\\u003c"),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(jsonLdBreadcrumb).replace(/</g, "\\u003c"),
           }}
         />
         {children}
