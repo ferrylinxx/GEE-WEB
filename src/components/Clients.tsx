@@ -41,46 +41,66 @@ export default function Clients() {
   ];
 
   return (
-    <section id="clients" className="py-24 bg-[var(--color-primary)]">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <ScrollReveal>
-          <div className="text-center max-w-3xl mx-auto">
-            <span className="text-sm font-semibold tracking-widest uppercase text-[var(--color-accent)]">
-              Per a qui treballem
-            </span>
-            <h2 className="mt-3 text-4xl font-bold text-white tracking-tight">
-              Clients
-            </h2>
-            <div className="mt-2 mx-auto h-1 w-16 bg-[var(--color-accent)]" />
-            <p className="mt-6 text-lg text-white/70 leading-relaxed">
-              La nostra independència i imparcialitat ens permet treballar tant per
-              a institucions públiques i privades, com per a empreses.
-            </p>
-          </div>
-        </ScrollReveal>
+    <section id="clients">
+      {/* Premium dark hero header */}
+      <div className="relative py-28 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-[var(--color-primary)] via-[var(--color-primary-dark)] to-[#071825]" />
+        <div className="absolute top-0 left-1/3 w-[500px] h-[500px] rounded-full bg-[var(--color-accent)]/8 blur-[120px] -translate-y-1/3" />
+        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full bg-[var(--color-accent)]/6 blur-[100px] translate-x-1/4 translate-y-1/3" />
+        <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: "linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px)", backgroundSize: "60px 60px" }} />
 
-        <div className="mt-16 grid md:grid-cols-2 gap-8">
-          {features.map((feature, i) => (
-            <ScrollReveal key={feature.title} delay={i * 100}>
-            <div
-              className="flex gap-5 p-6 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors h-full"
-            >
-              <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-[var(--color-accent)] flex items-center justify-center text-white">
-                {feature.icon}
-              </div>
-              <div>
-                <h3 className="text-lg font-semibold text-white">
-                  {feature.title}
-                </h3>
-                <p className="mt-2 text-sm text-white/60 leading-relaxed">
-                  {feature.desc}
-                </p>
-              </div>
+        <div className="mx-auto max-w-7xl px-6 lg:px-8 relative z-10">
+          <ScrollReveal>
+            <div className="max-w-3xl">
+              <span className="inline-flex items-center gap-3 text-sm font-semibold tracking-widest uppercase text-[var(--color-accent)]">
+                <span className="w-12 h-px bg-gradient-to-r from-[var(--color-accent)] to-transparent" />
+                Per a qui treballem
+              </span>
+              <h1 className="mt-6 text-5xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight leading-[1.05]">
+                Clients
+              </h1>
+              <div className="mt-6 h-1 w-20 bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-accent-light)] rounded-full" />
+              <p className="mt-8 text-lg md:text-xl text-white/60 leading-relaxed max-w-2xl">
+                La nostra independència i imparcialitat ens permet treballar tant per
+                a institucions públiques i privades, com per a empreses.
+              </p>
             </div>
-            </ScrollReveal>
-          ))}
+          </ScrollReveal>
         </div>
       </div>
+
+      {/* Feature cards on white bg */}
+      <div className="bg-white py-28">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="grid md:grid-cols-2 gap-8">
+            {features.map((feature, i) => (
+              <ScrollReveal key={feature.title} delay={i * 100}>
+                <div className="group relative flex gap-5 p-8 rounded-2xl bg-white border border-gray-100 hover:shadow-xl hover:shadow-[var(--color-accent)]/5 transition-all duration-500 h-full">
+                  {/* Decorative corner */}
+                  <div className="absolute top-0 right-0 w-24 h-24 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    <div className="absolute top-4 right-4 w-8 h-8 border-t-2 border-r-2 border-[var(--color-accent)]/30 rounded-tr-lg" />
+                  </div>
+
+                  <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-gradient-to-br from-[var(--color-accent)] to-[var(--color-accent-light)] flex items-center justify-center text-white shadow-lg shadow-[var(--color-accent)]/20 group-hover:shadow-[var(--color-accent)]/30 transition-shadow duration-500">
+                    {feature.icon}
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-bold text-[var(--color-primary)]">
+                      {feature.title}
+                    </h3>
+                    <p className="mt-2 text-sm text-[var(--color-text-muted)] leading-relaxed">
+                      {feature.desc}
+                    </p>
+                  </div>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Gradient separator */}
+      <div className="h-px bg-gradient-to-r from-transparent via-[var(--color-accent)]/20 to-transparent" />
     </section>
   );
 }
