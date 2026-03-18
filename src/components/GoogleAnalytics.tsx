@@ -51,9 +51,7 @@ export default function GoogleAnalytics() {
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [pathname]);
 
   // Track time on page (15s, 30s, 60s, 120s, 300s)
@@ -106,7 +104,6 @@ export default function GoogleAnalytics() {
       const text = btn.textContent?.trim();
       const href = btn.getAttribute("href");
 
-      // Track navigation to key pages
       if (href === "/contacte" || href === "/que-fem") {
         window.gtag("event", "cta_click", {
           event_category: "conversion",
@@ -116,7 +113,6 @@ export default function GoogleAnalytics() {
         });
       }
 
-      // Track form submit button
       if (btn.getAttribute("type") === "submit") {
         window.gtag("event", "form_submit_attempt", {
           event_category: "conversion",
@@ -125,7 +121,6 @@ export default function GoogleAnalytics() {
         });
       }
 
-      // Track phone/email clicks
       if (href?.startsWith("tel:") || href?.startsWith("mailto:")) {
         window.gtag("event", "contact_click", {
           event_category: "conversion",
@@ -141,6 +136,43 @@ export default function GoogleAnalytics() {
 
   return (
     <>
+      {/*
+        Google Consent Mode v2 — Default consent state
+        MUST load BEFORE gtag.js to comply with Google's EU User Consent Policy.
+        Default: denied for all storage types in EEA regions.
+        The CookieConsent component will call gtag('consent', 'update', ...) when user decides.
+      */}
+      <Script id="google-consent-default" strategy="beforeInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+
+          gtag('consent', 'default', {
+            'ad_storage': 'denied',
+            'ad_user_data': 'denied',
+            'ad_personalization': 'denied',
+            'analytics_storage': 'denied',
+            'wait_for_update': 500
+          });
+
+          // Restore consent from localStorage if user already chose
+          (function() {
+            try {
+              var consent = localStorage.getItem('gee-cookie-consent');
+              if (consent === 'accepted') {
+                gtag('consent', 'update', {
+                  'ad_storage': 'denied',
+                  'ad_user_data': 'denied',
+                  'ad_personalization': 'denied',
+                  'analytics_storage': 'granted'
+                });
+              }
+            } catch(e) {}
+          })();
+        `}
+      </Script>
+
+      {/* Google Analytics gtag.js — loads after consent defaults are set */}
       <Script
         src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
         strategy="afterInteractive"
@@ -156,6 +188,13 @@ export default function GoogleAnalytics() {
           });
         `}
       </Script>
+
+      {/* Google AdSense */}
+      <Script
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6269718356198501"
+        crossOrigin="anonymous"
+        strategy="afterInteractive"
+      />
     </>
   );
 }

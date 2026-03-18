@@ -7,6 +7,7 @@ import { routing } from "@/i18n/routing";
 import "../globals.css";
 import ScrollToTop from "@/components/ScrollToTop";
 import ScrollReset from "@/components/ScrollReset";
+import CookieConsent from "@/components/CookieConsent";
 
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 import { Analytics } from "@vercel/analytics/next";
@@ -345,9 +346,10 @@ export default async function LocaleLayout({ children, params }: Props) {
         />
         <NextIntlClientProvider messages={messages}>
           <ScrollReset />
-            {children}
+          {children}
+          <ScrollToTop />
+          <CookieConsent />
         </NextIntlClientProvider>
-        <ScrollToTop />
         <Analytics />
       </body>
     </html>

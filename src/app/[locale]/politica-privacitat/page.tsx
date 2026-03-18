@@ -1,218 +1,297 @@
+import { setRequestLocale } from "next-intl/server";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Link from "next/link";
 
-export const metadata = {
-  title: "Política de Privacitat",
-  description:
-    "Política de privacitat i protecció de dades personals de Gabinet Estudis Econòmics (GLLG) conforme al RGPD i la LOPDGDD.",
-  alternates: { canonical: "https://geeconomics.com/politica-privacitat" },
-  openGraph: {
-    title: "Política de Privacitat | Gabinet Estudis Econòmics",
-    description:
-      "Protecció de dades personals conforme al RGPD i la LOPDGDD.",
-    url: "https://geeconomics.com/politica-privacitat",
-  },
+type Props = {
+  params: Promise<{ locale: string }>;
 };
 
-export default function PoliticaPrivacitatPage() {
+export async function generateMetadata({ params }: Props) {
+  const { locale } = await params;
+  return {
+    title: "Política de Privacitat",
+    description:
+      "Política de privacitat i protecció de dades personals de Gabinet Estudis Econòmics (GLLG) conforme al RGPD i la LOPDGDD.",
+    alternates: {
+      canonical: `https://geeconomics.com${locale === "ca" ? "" : `/${locale}`}/politica-privacitat`,
+      languages: {
+        ca: "https://geeconomics.com/politica-privacitat",
+        es: "https://geeconomics.com/es/politica-privacitat",
+        en: "https://geeconomics.com/en/politica-privacitat",
+        "x-default": "https://geeconomics.com/politica-privacitat",
+      },
+    },
+    openGraph: {
+      title: "Política de Privacitat | Gabinet Estudis Econòmics",
+      description: "Protecció de dades personals conforme al RGPD i la LOPDGDD.",
+      url: `https://geeconomics.com${locale === "ca" ? "" : `/${locale}`}/politica-privacitat`,
+    },
+  };
+}
+
+function InfoCard({ label, value }: { label: string; value: React.ReactNode }) {
+  return (
+    <div className="bg-white/60 rounded-xl p-4 border border-[var(--color-primary)]/5">
+      <span className="text-[10px] uppercase tracking-[0.15em] text-[var(--color-accent)] font-semibold">{label}</span>
+      <div className="text-sm text-[var(--color-text-dark)] mt-1 font-medium">{value}</div>
+    </div>
+  );
+}
+
+function SectionBlock({ num, title, children }: { num: string; title: string; children: React.ReactNode }) {
+  return (
+    <section>
+      <div className="flex items-center gap-4 mb-5">
+        <span className="text-xs font-mono text-[var(--color-accent)]/60 bg-[var(--color-accent)]/8 w-9 h-9 rounded-xl flex items-center justify-center font-semibold">
+          {num}
+        </span>
+        <h2 className="text-xl font-semibold text-[var(--color-primary)]">{title}</h2>
+      </div>
+      <div className="pl-[52px]">{children}</div>
+    </section>
+  );
+}
+
+function BulletItem({ title, desc }: { title: string; desc: string }) {
+  return (
+    <div className="flex gap-3 items-start">
+      <div className="w-1.5 h-1.5 rounded-full bg-[var(--color-accent)] mt-2 shrink-0" />
+      <div>
+        <span className="text-sm font-semibold text-[var(--color-primary)]">{title}</span>
+        <p className="text-sm text-[var(--color-text-muted)] mt-0.5">{desc}</p>
+      </div>
+    </div>
+  );
+}
+
+export default async function PoliticaPrivacitatPage({ params }: Props) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
   return (
     <>
       <Navbar />
       <main className="pt-28 pb-20 bg-[var(--color-bg-light)] min-h-[calc(100vh-5rem)]">
-        <div className="mx-auto max-w-3xl px-6 lg:px-8">
-          <h1 className="text-3xl font-bold text-[var(--color-primary)] mb-2">
-            Política de Privacitat
-          </h1>
-          <p className="text-sm text-[var(--color-text-muted)] mb-10">
-            Última actualització: 16 de març de 2026
-          </p>
+        {/* Hero header */}
+        <div className="relative overflow-hidden bg-gradient-to-br from-[var(--color-primary-dark)] via-[var(--color-primary)] to-[var(--color-primary-dark)] py-16 mb-12">
+          <div className="absolute inset-0">
+            <div className="absolute top-10 right-20 w-72 h-72 rounded-full bg-[var(--color-accent)]/5 blur-3xl" />
+            <div className="absolute bottom-10 left-10 w-56 h-56 rounded-full bg-white/3 blur-3xl" />
+          </div>
+          <div className="relative mx-auto max-w-3xl px-6 lg:px-8">
+            <div className="flex items-center gap-3 mb-4">
+              <svg className="w-5 h-5 text-[var(--color-accent)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+              </svg>
+              <span className="text-xs uppercase tracking-[0.2em] text-[var(--color-accent)] font-medium">
+                RGPD · LOPDGDD
+              </span>
+            </div>
+            <h1 className="text-3xl md:text-4xl font-bold text-white mb-3">
+              Política de Privacitat
+            </h1>
+            <p className="text-white/50 text-sm">
+              Última actualització: 16 de març de 2026
+            </p>
+          </div>
+        </div>
 
-          <div className="prose prose-sm max-w-none text-[var(--color-text-muted)] space-y-8">
-            {/* 1. Responsable */}
-            <section>
-              <h2 className="text-xl font-semibold text-[var(--color-primary)] mb-3">
-                1. Responsable del tractament
-              </h2>
-              <ul className="space-y-1 list-none pl-0">
-                <li><strong>Identitat:</strong> GLLG, S.L.</li>
-                <li><strong>NIF:</strong> B05462338</li>
-                <li><strong>Adreça postal:</strong> Passatge de Forasté, 4, Bis, Local 7, 08022 Barcelona</li>
-                <li><strong>Telèfon:</strong> 932 119 744</li>
-                <li><strong>Correu electrònic:</strong>{" "}
-                  <a href="mailto:gllg@geeconomics.com" className="text-[var(--color-accent)] hover:underline">
-                    gllg@geeconomics.com
-                  </a>
-                </li>
-                <li><strong>Lloc web:</strong>{" "}
-                  <a href="https://geeconomics.com" className="text-[var(--color-accent)] hover:underline">
-                    geeconomics.com
-                  </a>
-                </li>
-              </ul>
-            </section>
+        {/* Content */}
+        <div className="mx-auto max-w-3xl px-6 lg:px-8 space-y-10">
 
-            {/* 2. Finalitats */}
-            <section>
-              <h2 className="text-xl font-semibold text-[var(--color-primary)] mb-3">
-                2. Finalitats del tractament
-              </h2>
-              <p>
-                A Gabinet Estudis Econòmics (GLLG) tractem les dades personals que ens
-                facilita amb les següents finalitats:
-              </p>
-              <ul className="list-disc pl-5 space-y-1 mt-2">
-                <li>Gestionar les sol·licituds d&apos;informació o contacte rebudes a través del formulari web.</li>
-                <li>Prestar els serveis professionals de consultoria econòmica sol·licitats.</li>
-                <li>Enviar comunicacions comercials sobre els nostres serveis, únicament si ha atorgat el seu consentiment explícit.</li>
-                <li>Complir amb les obligacions legals i fiscals aplicables.</li>
-                <li>Analitzar la navegació al lloc web mitjançant Google Analytics per millorar la nostra oferta de serveis.</li>
-              </ul>
-            </section>
+          {/* 01 - Responsable */}
+          <SectionBlock num="01" title="Responsable del tractament">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <InfoCard label="Identitat" value="GLLG, S.L." />
+              <InfoCard label="NIF" value="B05462338" />
+              <InfoCard label="Adreça" value="Passatge de Forasté, 4, Bis, Local 7, 08022 Barcelona" />
+              <InfoCard label="Telèfon" value="932 119 744" />
+              <InfoCard label="Email" value={
+                <a href="mailto:gllg@geeconomics.com" className="text-[var(--color-primary)] hover:text-[var(--color-accent)] transition-colors">
+                  gllg@geeconomics.com
+                </a>
+              } />
+              <InfoCard label="Web" value={
+                <a href="https://geeconomics.com" className="text-[var(--color-primary)] hover:text-[var(--color-accent)] transition-colors">
+                  geeconomics.com
+                </a>
+              } />
+            </div>
+          </SectionBlock>
 
-            {/* 3. Base jurídica */}
-            <section>
-              <h2 className="text-xl font-semibold text-[var(--color-primary)] mb-3">
-                3. Base jurídica del tractament
-              </h2>
-              <p>Les bases legals per al tractament de les seves dades són:</p>
-              <ul className="list-disc pl-5 space-y-1 mt-2">
-                <li><strong>Consentiment:</strong> l&apos;interessat ha atorgat el seu consentiment per al tractament de les dades personals mitjançant el formulari de contacte (art. 6.1.a RGPD).</li>
-                <li><strong>Execució d&apos;un contracte:</strong> el tractament és necessari per a l&apos;execució del contracte de serveis professionals (art. 6.1.b RGPD).</li>
-                <li><strong>Interès legítim:</strong> anàlisi estadística de la navegació web per millorar els nostres serveis (art. 6.1.f RGPD).</li>
-                <li><strong>Obligació legal:</strong> compliment d&apos;obligacions fiscals i mercantils (art. 6.1.c RGPD).</li>
-              </ul>
-            </section>
+          {/* 02 - Finalitats */}
+          <SectionBlock num="02" title="Finalitats del tractament">
+            <p className="text-[var(--color-text-muted)] leading-relaxed mb-4">
+              A Gabinet Estudis Econòmics (GLLG) tractem les dades personals amb les següents finalitats:
+            </p>
+            <div className="space-y-3">
+              <BulletItem title="Formulari de contacte" desc="Gestionar les sol·licituds d'informació o contacte rebudes a través del formulari web." />
+              <BulletItem title="Serveis professionals" desc="Prestar els serveis professionals de consultoria econòmica sol·licitats." />
+              <BulletItem title="Comunicacions" desc="Enviar comunicacions comercials sobre els nostres serveis, únicament amb consentiment explícit." />
+              <BulletItem title="Obligacions legals" desc="Complir amb les obligacions legals i fiscals aplicables." />
+              <BulletItem title="Analítica web" desc="Analitzar la navegació al lloc web mitjançant Google Analytics per millorar els nostres serveis." />
+            </div>
+          </SectionBlock>
 
-            {/* 4. Dades recollides */}
-            <section>
-              <h2 className="text-xl font-semibold text-[var(--color-primary)] mb-3">
-                4. Dades que recollim
-              </h2>
-              <p>A través del formulari de contacte recollim:</p>
-              <ul className="list-disc pl-5 space-y-1 mt-2">
-                <li>Nom i cognoms</li>
-                <li>Adreça de correu electrònic</li>
-                <li>Número de telèfon</li>
-                <li>Nom de l&apos;empresa</li>
-                <li>Contingut del missatge</li>
-              </ul>
-              <p className="mt-3">
-                Mitjançant Google Analytics, es recullen dades anònimes de navegació
-                (pàgines visitades, temps de permanència, dispositiu, ubicació
-                aproximada). Consulteu la nostra{" "}
-                <Link href="/politica-cookies" className="text-[var(--color-accent)] hover:underline">
+          {/* 03 - Base jurídica */}
+          <SectionBlock num="03" title="Base jurídica del tractament">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {[
+                ["Consentiment", "Art. 6.1.a RGPD", "Consentiment atorgat mitjançant el formulari de contacte."],
+                ["Contracte", "Art. 6.1.b RGPD", "Tractament necessari per a l'execució del contracte de serveis."],
+                ["Interès legítim", "Art. 6.1.f RGPD", "Anàlisi estadística de la navegació web."],
+                ["Obligació legal", "Art. 6.1.c RGPD", "Compliment d'obligacions fiscals i mercantils."],
+              ].map(([title, article, desc]) => (
+                <div key={title} className="bg-white/60 rounded-xl p-5 border border-[var(--color-primary)]/5">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-sm font-semibold text-[var(--color-primary)]">{title}</span>
+                    <span className="text-[10px] font-mono text-[var(--color-accent)] bg-[var(--color-accent)]/10 px-2 py-0.5 rounded-full">{article}</span>
+                  </div>
+                  <p className="text-xs text-[var(--color-text-muted)] leading-relaxed">{desc}</p>
+                </div>
+              ))}
+            </div>
+          </SectionBlock>
+
+          {/* 04 - Dades */}
+          <SectionBlock num="04" title="Dades que recollim">
+            <p className="text-[var(--color-text-muted)] text-sm leading-relaxed mb-4">
+              A través del formulari de contacte recollim:
+            </p>
+            <div className="flex flex-wrap gap-2 mb-5">
+              {["Nom i cognoms", "Correu electrònic", "Telèfon", "Empresa", "Missatge"].map((item) => (
+                <span key={item} className="text-xs bg-[var(--color-primary)]/5 text-[var(--color-primary)] px-3 py-1.5 rounded-full font-medium">
+                  {item}
+                </span>
+              ))}
+            </div>
+            <div className="bg-[var(--color-accent)]/5 border border-[var(--color-accent)]/15 rounded-xl p-4">
+              <p className="text-sm text-[var(--color-text-muted)] leading-relaxed">
+                Mitjançant Google Analytics, es recullen dades anònimes de navegació. Consulteu la nostra{" "}
+                <Link href="/politica-cookies" className="text-[var(--color-accent)] font-medium hover:underline">
                   Política de Cookies
                 </Link>{" "}
                 per a més informació.
               </p>
-            </section>
+            </div>
+          </SectionBlock>
 
-            {/* 5. Conservació */}
-            <section>
-              <h2 className="text-xl font-semibold text-[var(--color-primary)] mb-3">
-                5. Conservació de les dades
-              </h2>
-              <ul className="list-disc pl-5 space-y-1">
-                <li><strong>Sol·licituds de contacte:</strong> les dades es conservaran durant el temps necessari per atendre la consulta i, posteriorment, durant els terminis legals de prescripció aplicables.</li>
-                <li><strong>Relació contractual:</strong> les dades es conservaran durant la vigència del contracte i els terminis legals posteriors (fins a 5 anys segons la legislació mercantil).</li>
-                <li><strong>Comunicacions comercials:</strong> fins que l&apos;interessat revoqui el consentiment.</li>
-                <li><strong>Dades de navegació:</strong> Google Analytics conserva les dades durant 14 mesos.</li>
-              </ul>
-            </section>
+          {/* 05 - Conservació */}
+          <SectionBlock num="05" title="Conservació de les dades">
+            <div className="space-y-3">
+              {[
+                ["Sol·licituds de contacte", "Durant el temps necessari per atendre la consulta i els terminis legals de prescripció."],
+                ["Relació contractual", "Durant la vigència del contracte i fins a 5 anys segons la legislació mercantil."],
+                ["Comunicacions comercials", "Fins que l'interessat revoqui el consentiment."],
+                ["Dades de navegació", "Google Analytics conserva les dades durant 14 mesos."],
+              ].map(([title, desc]) => (
+                <div key={title} className="flex gap-4 items-start bg-white/60 rounded-xl p-4 border border-[var(--color-primary)]/5">
+                  <div className="w-8 h-8 rounded-lg bg-[var(--color-primary)]/5 flex items-center justify-center shrink-0">
+                    <svg className="w-4 h-4 text-[var(--color-accent)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <span className="text-sm font-semibold text-[var(--color-primary)]">{title}</span>
+                    <p className="text-xs text-[var(--color-text-muted)] mt-1 leading-relaxed">{desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </SectionBlock>
 
-            {/* 6. Destinataris */}
-            <section>
-              <h2 className="text-xl font-semibold text-[var(--color-primary)] mb-3">
-                6. Destinataris de les dades
-              </h2>
-              <p>Les dades personals no se cediran a tercers, excepte:</p>
-              <ul className="list-disc pl-5 space-y-1 mt-2">
-                <li>Quan existeixi una obligació legal (Agència Tributària, jutjats, etc.).</li>
-                <li><strong>Google LLC</strong> (Google Analytics): processament de dades anònimes de navegació. Google actua com a encarregat del tractament i les dades es poden transferir als EUA sota les clàusules contractuals tipus aprovades per la Comissió Europea.</li>
-                <li><strong>IONOS</strong> (proveïdor de correu electrònic): els missatges enviats a través del formulari de contacte es transmeten via SMTP a través dels servidors d&apos;IONOS.</li>
-              </ul>
-            </section>
+          {/* 06 - Destinataris */}
+          <SectionBlock num="06" title="Destinataris de les dades">
+            <p className="text-sm text-[var(--color-text-muted)] leading-relaxed mb-4">
+              Les dades personals no se cediran a tercers, excepte:
+            </p>
+            <div className="space-y-3">
+              <BulletItem title="Obligació legal" desc="Quan existeixi una obligació legal (Agència Tributària, jutjats, etc.)." />
+              <BulletItem title="Google LLC" desc="Google Analytics: processament de dades anònimes de navegació. Les dades es poden transferir als EUA sota les clàusules contractuals tipus." />
+              <BulletItem title="IONOS" desc="Proveïdor de correu electrònic: els missatges del formulari es transmeten via SMTP a través dels servidors d'IONOS." />
+            </div>
+          </SectionBlock>
 
-            {/* 7. Drets */}
-            <section>
-              <h2 className="text-xl font-semibold text-[var(--color-primary)] mb-3">
-                7. Drets de l&apos;interessat
-              </h2>
-              <p>D&apos;acord amb el RGPD i la LOPDGDD, vostè té dret a:</p>
-              <ul className="list-disc pl-5 space-y-1 mt-2">
-                <li><strong>Accés:</strong> conèixer quines dades personals tractem sobre vostè.</li>
-                <li><strong>Rectificació:</strong> sol·licitar la correcció de dades inexactes o incompletes.</li>
-                <li><strong>Supressió:</strong> sol·licitar l&apos;eliminació de les seves dades quan ja no siguin necessàries.</li>
-                <li><strong>Oposició:</strong> oposar-se al tractament de les dades en determinades circumstàncies.</li>
-                <li><strong>Limitació:</strong> sol·licitar la limitació del tractament en els supòsits previstos legalment.</li>
-                <li><strong>Portabilitat:</strong> rebre les seves dades en un format estructurat d&apos;ús comú.</li>
-                <li><strong>Revocació del consentiment:</strong> retirar el consentiment atorgat en qualsevol moment, sense que afecti la licitud del tractament previ.</li>
-              </ul>
-              <p className="mt-3">
-                Per exercir els seus drets, pot contactar-nos a{" "}
-                <a href="mailto:gllg@geeconomics.com" className="text-[var(--color-accent)] hover:underline">
+          {/* 07 - Drets */}
+          <SectionBlock num="07" title="Drets de l'interessat">
+            <p className="text-sm text-[var(--color-text-muted)] leading-relaxed mb-4">
+              D&apos;acord amb el RGPD i la LOPDGDD, vostè té dret a:
+            </p>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-5">
+              {[
+                ["Accés", "Conèixer quines dades tractem"],
+                ["Rectificació", "Corregir dades inexactes"],
+                ["Supressió", "Eliminar les seves dades"],
+                ["Oposició", "Oposar-se al tractament"],
+                ["Limitació", "Limitar el tractament"],
+                ["Portabilitat", "Rebre dades en format estàndard"],
+                ["Revocació", "Retirar el consentiment"],
+              ].map(([title, desc]) => (
+                <div key={title} className="bg-white/60 rounded-xl p-3 border border-[var(--color-primary)]/5 text-center">
+                  <span className="text-xs font-semibold text-[var(--color-primary)] block">{title}</span>
+                  <span className="text-[10px] text-[var(--color-text-muted)] mt-1 block">{desc}</span>
+                </div>
+              ))}
+            </div>
+            <div className="bg-[var(--color-primary)]/5 rounded-xl p-4 space-y-2">
+              <p className="text-sm text-[var(--color-text-muted)]">
+                Per exercir els seus drets, contacti&apos;ns a{" "}
+                <a href="mailto:gllg@geeconomics.com" className="text-[var(--color-accent)] font-medium hover:underline">
                   gllg@geeconomics.com
                 </a>{" "}
-                o a l&apos;adreça postal indicada anteriorment, adjuntant una còpia del
-                seu document d&apos;identitat.
+                adjuntant una còpia del seu document d&apos;identitat.
               </p>
-              <p className="mt-2">
-                Si considera que el tractament de les seves dades no s&apos;ajusta a la
-                normativa vigent, pot presentar una reclamació davant l&apos;
-                <strong>Agència Espanyola de Protecció de Dades</strong> (
-                <a href="https://www.aepd.es" target="_blank" rel="noopener noreferrer" className="text-[var(--color-accent)] hover:underline">
-                  www.aepd.es
-                </a>
-                ).
+              <p className="text-sm text-[var(--color-text-muted)]">
+                Pot presentar una reclamació davant l&apos;
+                <a href="https://www.aepd.es" target="_blank" rel="noopener noreferrer" className="text-[var(--color-accent)] font-medium hover:underline">
+                  Agència Espanyola de Protecció de Dades
+                </a>.
               </p>
-            </section>
+            </div>
+          </SectionBlock>
 
-            {/* 8. Mesures de seguretat */}
-            <section>
-              <h2 className="text-xl font-semibold text-[var(--color-primary)] mb-3">
-                8. Mesures de seguretat
-              </h2>
-              <p>
-                Hem adoptat les mesures tècniques i organitzatives adequades per
-                garantir la seguretat de les seves dades personals, incloent-hi:
-              </p>
-              <ul className="list-disc pl-5 space-y-1 mt-2">
-                <li>Connexió xifrada mitjançant certificat SSL/TLS (HTTPS).</li>
-                <li>Enviament de correus electrònics mitjançant SMTP amb xifrat TLS.</li>
-                <li>Control d&apos;accés restringit a les dades personals.</li>
-                <li>Còpies de seguretat periòdiques.</li>
-              </ul>
-            </section>
+          {/* 08 - Seguretat */}
+          <SectionBlock num="08" title="Mesures de seguretat">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {[
+                ["SSL/TLS", "Connexió xifrada mitjançant certificat HTTPS"],
+                ["SMTP segur", "Enviament de correus amb xifrat TLS"],
+                ["Accés restringit", "Control d'accés restringit a les dades personals"],
+                ["Còpies de seguretat", "Còpies de seguretat periòdiques"],
+              ].map(([title, desc]) => (
+                <div key={title} className="flex gap-3 items-start bg-white/60 rounded-xl p-4 border border-[var(--color-primary)]/5">
+                  <svg className="w-5 h-5 text-green-600 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+                  </svg>
+                  <div>
+                    <span className="text-sm font-semibold text-[var(--color-primary)]">{title}</span>
+                    <p className="text-xs text-[var(--color-text-muted)] mt-0.5">{desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </SectionBlock>
 
-            {/* 9. Cookies */}
-            <section>
-              <h2 className="text-xl font-semibold text-[var(--color-primary)] mb-3">
-                9. Galetes (Cookies)
-              </h2>
-              <p>
-                Aquest lloc web utilitza galetes pròpies i de tercers. Per a informació
-                detallada sobre les galetes que utilitzem, la seva finalitat i com
-                gestionar-les, consulteu la nostra{" "}
-                <Link href="/politica-cookies" className="text-[var(--color-accent)] hover:underline font-medium">
-                  Política de Cookies
+          {/* 09 - Cookies */}
+          <SectionBlock num="09" title="Galetes (Cookies)">
+            <div className="bg-[var(--color-accent)]/5 border border-[var(--color-accent)]/15 rounded-xl p-5">
+              <p className="text-sm text-[var(--color-text-muted)] leading-relaxed">
+                Aquest lloc web utilitza galetes pròpies i de tercers. Per a informació detallada, consulteu la nostra{" "}
+                <Link href="/politica-cookies" className="text-[var(--color-accent)] font-semibold hover:underline">
+                  Política de Cookies →
                 </Link>
-                .
               </p>
-            </section>
+            </div>
+          </SectionBlock>
 
-            {/* 10. Modificacions */}
-            <section>
-              <h2 className="text-xl font-semibold text-[var(--color-primary)] mb-3">
-                10. Modificacions de la política
-              </h2>
-              <p>
-                GLLG es reserva el dret de modificar aquesta política de privacitat per
-                adaptar-la a novetats legislatives o jurisprudencials. En cas de canvis
-                significatius, s&apos;informarà els usuaris a través del lloc web.
-              </p>
-            </section>
-          </div>
+          {/* 10 - Modificacions */}
+          <SectionBlock num="10" title="Modificacions de la política">
+            <p className="text-sm text-[var(--color-text-muted)] leading-relaxed">
+              GLLG es reserva el dret de modificar aquesta política de privacitat per adaptar-la a novetats legislatives o jurisprudencials. En cas de canvis significatius, s&apos;informarà els usuaris a través del lloc web.
+            </p>
+          </SectionBlock>
+
         </div>
       </main>
       <Footer />

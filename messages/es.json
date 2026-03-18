@@ -188,6 +188,13 @@
     "contactUs": "Contactarnos",
     "sections": "Secciones principales"
   },
+  "cookies": {
+    "title": "Protección de datos y cookies",
+    "description": "Utilizamos cookies analíticas (Google Analytics) para mejorar su experiencia en nuestro sitio web. Los datos recogidos son anónimos y agregados.",
+    "learnMore": "Política de cookies →",
+    "accept": "Aceptar",
+    "reject": "Rechazar"
+  },
   "metadata": {
     "homeTitle": "Gabinete Estudios Económicos | Consultoría Económica en Barcelona",
     "homeDescription": "Gabinete Estudios Económicos (GEE) - Desde 1989 desarrollamos trabajos de análisis estratégico, impacto económico, evaluación urbanística y dictámenes periciales en Barcelona.",

@@ -1,262 +1,260 @@
+import { setRequestLocale } from "next-intl/server";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Link from "next/link";
 
-export const metadata = {
-  title: "Política de Cookies",
-  description:
-    "Política de cookies del lloc web de Gabinet Estudis Econòmics (GLLG). Informació sobre les galetes que utilitzem i com gestionar-les.",
-  alternates: { canonical: "https://geeconomics.com/politica-cookies" },
-  openGraph: {
-    title: "Política de Cookies | Gabinet Estudis Econòmics",
-    description:
-      "Informació sobre les galetes que utilitzem i com gestionar-les.",
-    url: "https://geeconomics.com/politica-cookies",
-  },
+type Props = {
+  params: Promise<{ locale: string }>;
 };
 
-export default function PoliticaCookiesPage() {
+export async function generateMetadata({ params }: Props) {
+  const { locale } = await params;
+  return {
+    title: "Política de Cookies",
+    description:
+      "Política de cookies del lloc web de Gabinet Estudis Econòmics (GLLG). Informació sobre les galetes que utilitzem i com gestionar-les.",
+    alternates: {
+      canonical: `https://geeconomics.com${locale === "ca" ? "" : `/${locale}`}/politica-cookies`,
+      languages: {
+        ca: "https://geeconomics.com/politica-cookies",
+        es: "https://geeconomics.com/es/politica-cookies",
+        en: "https://geeconomics.com/en/politica-cookies",
+        "x-default": "https://geeconomics.com/politica-cookies",
+      },
+    },
+    openGraph: {
+      title: "Política de Cookies | Gabinet Estudis Econòmics",
+      description: "Informació sobre les galetes que utilitzem i com gestionar-les.",
+      url: `https://geeconomics.com${locale === "ca" ? "" : `/${locale}`}/politica-cookies`,
+    },
+  };
+}
+
+const cookieData = [
+  { name: "_ga", provider: "Google", type: "Analítica", purpose: "Distingeix usuaris únics assignant un número generat aleatòriament.", duration: "2 anys" },
+  { name: "_ga_*", provider: "Google", type: "Analítica", purpose: "Manté l'estat de la sessió per a Google Analytics 4.", duration: "2 anys" },
+  { name: "_gid", provider: "Google", type: "Analítica", purpose: "Distingeix usuaris i emmagatzema informació de cada pàgina visitada.", duration: "24 hores" },
+  { name: "_gat", provider: "Google", type: "Rendiment", purpose: "Limita la velocitat de sol·licituds a Google Analytics.", duration: "1 minut" },
+];
+
+const browsers = [
+  { name: "Google Chrome", path: "Configuració → Privadesa i seguretat → Galetes" },
+  { name: "Mozilla Firefox", path: "Opcions → Privadesa i seguretat → Galetes" },
+  { name: "Safari", path: "Preferències → Privadesa → Gestió de dades" },
+  { name: "Microsoft Edge", path: "Configuració → Privadesa, cerca i serveis → Galetes" },
+];
+
+function SectionBlock({ num, title, children }: { num: string; title: string; children: React.ReactNode }) {
+  return (
+    <section>
+      <div className="flex items-center gap-4 mb-5">
+        <span className="text-xs font-mono text-[var(--color-accent)]/60 bg-[var(--color-accent)]/8 w-9 h-9 rounded-xl flex items-center justify-center font-semibold">
+          {num}
+        </span>
+        <h2 className="text-xl font-semibold text-[var(--color-primary)]">{title}</h2>
+      </div>
+      <div className="pl-[52px]">{children}</div>
+    </section>
+  );
+}
+
+export default async function PoliticaCookiesPage({ params }: Props) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
   return (
     <>
       <Navbar />
       <main className="pt-28 pb-20 bg-[var(--color-bg-light)] min-h-[calc(100vh-5rem)]">
-        <div className="mx-auto max-w-3xl px-6 lg:px-8">
-          <h1 className="text-3xl font-bold text-[var(--color-primary)] mb-2">
-            Política de Cookies
-          </h1>
-          <p className="text-sm text-[var(--color-text-muted)] mb-10">
-            Última actualització: 16 de març de 2026
-          </p>
+        {/* Hero header */}
+        <div className="relative overflow-hidden bg-gradient-to-br from-[var(--color-primary-dark)] via-[var(--color-primary)] to-[var(--color-primary-dark)] py-16 mb-12">
+          <div className="absolute inset-0">
+            <div className="absolute top-10 right-20 w-72 h-72 rounded-full bg-[var(--color-accent)]/5 blur-3xl" />
+            <div className="absolute bottom-10 left-10 w-56 h-56 rounded-full bg-white/3 blur-3xl" />
+          </div>
+          <div className="relative mx-auto max-w-3xl px-6 lg:px-8">
+            <div className="flex items-center gap-3 mb-4">
+              <svg className="w-5 h-5 text-[var(--color-accent)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" />
+              </svg>
+              <span className="text-xs uppercase tracking-[0.2em] text-[var(--color-accent)] font-medium">
+                LSSI-CE · RGPD
+              </span>
+            </div>
+            <h1 className="text-3xl md:text-4xl font-bold text-white mb-3">
+              Política de Cookies
+            </h1>
+            <p className="text-white/50 text-sm">
+              Última actualització: 16 de març de 2026
+            </p>
+          </div>
+        </div>
 
-          <div className="prose prose-sm max-w-none text-[var(--color-text-muted)] space-y-8">
-            {/* 1. Què són les cookies */}
-            <section>
-              <h2 className="text-xl font-semibold text-[var(--color-primary)] mb-3">
-                1. Què són les galetes (cookies)?
-              </h2>
-              <p>
-                Les galetes són petits arxius de text que els llocs web emmagatzemen al
-                dispositiu de l&apos;usuari (ordinador, tauleta o telèfon mòbil) quan
-                hi navega. Serveixen per recordar informació sobre la visita, com les
-                preferències d&apos;idioma, les pàgines visitades o les dades de sessió,
-                facilitant la navegació i fent-la més útil.
-              </p>
-            </section>
+        {/* Content */}
+        <div className="mx-auto max-w-3xl px-6 lg:px-8 space-y-10">
 
-            {/* 2. Galetes que utilitzem */}
-            <section>
-              <h2 className="text-xl font-semibold text-[var(--color-primary)] mb-3">
-                2. Galetes que utilitzem
-              </h2>
+          {/* 01 */}
+          <SectionBlock num="01" title="Què són les galetes (cookies)?">
+            <p className="text-sm text-[var(--color-text-muted)] leading-relaxed">
+              Les galetes són petits arxius de text que els llocs web emmagatzemen al dispositiu de l&apos;usuari (ordinador, tauleta o telèfon mòbil) quan hi navega. Serveixen per recordar informació sobre la visita, com les preferències d&apos;idioma, les pàgines visitades o les dades de sessió, facilitant la navegació i fent-la més útil.
+            </p>
+          </SectionBlock>
 
-              {/* Tabla de cookies */}
-              <div className="overflow-x-auto mt-4">
-                <table className="w-full text-sm border border-gray-200 rounded-lg overflow-hidden">
-                  <thead className="bg-[var(--color-primary)] text-white">
-                    <tr>
-                      <th className="px-4 py-3 text-left font-medium">Nom</th>
-                      <th className="px-4 py-3 text-left font-medium">Proveïdor</th>
-                      <th className="px-4 py-3 text-left font-medium">Tipus</th>
-                      <th className="px-4 py-3 text-left font-medium">Finalitat</th>
-                      <th className="px-4 py-3 text-left font-medium">Durada</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-gray-100">
-                    <tr className="bg-white">
-                      <td className="px-4 py-3 font-mono text-xs">_ga</td>
-                      <td className="px-4 py-3">Google</td>
-                      <td className="px-4 py-3">Analítica</td>
-                      <td className="px-4 py-3">Distingeix usuaris únics assignant un número generat aleatòriament.</td>
-                      <td className="px-4 py-3">2 anys</td>
-                    </tr>
-                    <tr className="bg-gray-50">
-                      <td className="px-4 py-3 font-mono text-xs">_ga_*</td>
-                      <td className="px-4 py-3">Google</td>
-                      <td className="px-4 py-3">Analítica</td>
-                      <td className="px-4 py-3">Manté l&apos;estat de la sessió per a Google Analytics 4.</td>
-                      <td className="px-4 py-3">2 anys</td>
-                    </tr>
-                    <tr className="bg-white">
-                      <td className="px-4 py-3 font-mono text-xs">_gid</td>
-                      <td className="px-4 py-3">Google</td>
-                      <td className="px-4 py-3">Analítica</td>
-                      <td className="px-4 py-3">Distingeix usuaris i emmagatzema informació de cada pàgina visitada.</td>
-                      <td className="px-4 py-3">24 hores</td>
-                    </tr>
-                    <tr className="bg-gray-50">
-                      <td className="px-4 py-3 font-mono text-xs">_gat</td>
-                      <td className="px-4 py-3">Google</td>
-                      <td className="px-4 py-3">Rendiment</td>
-                      <td className="px-4 py-3">Limita la velocitat de sol·licituds a Google Analytics.</td>
-                      <td className="px-4 py-3">1 minut</td>
-                    </tr>
-                  </tbody>
-                </table>
+          {/* 02 */}
+          <SectionBlock num="02" title="Galetes que utilitzem">
+            <div className="space-y-3">
+              {cookieData.map((cookie) => (
+                <div key={cookie.name} className="bg-white/60 rounded-xl p-4 border border-[var(--color-primary)]/5">
+                  <div className="flex flex-wrap items-center gap-2 mb-2">
+                    <code className="text-xs font-mono bg-[var(--color-primary)]/8 text-[var(--color-primary)] px-2 py-0.5 rounded-md font-semibold">
+                      {cookie.name}
+                    </code>
+                    <span className="text-[10px] bg-[var(--color-accent)]/10 text-[var(--color-accent)] px-2 py-0.5 rounded-full font-medium">
+                      {cookie.type}
+                    </span>
+                    <span className="text-[10px] text-[var(--color-text-muted)] ml-auto">
+                      {cookie.provider} · {cookie.duration}
+                    </span>
+                  </div>
+                  <p className="text-xs text-[var(--color-text-muted)] leading-relaxed">{cookie.purpose}</p>
+                </div>
+              ))}
+            </div>
+          </SectionBlock>
+
+          {/* 03 */}
+          <SectionBlock num="03" title="Tipus de galetes segons la seva finalitat">
+            <div className="space-y-6">
+              <div>
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="w-2 h-2 rounded-full bg-gray-400" />
+                  <h3 className="text-sm font-semibold text-[var(--color-primary)]">Galetes tècniques (necessàries)</h3>
+                </div>
+                <p className="text-sm text-[var(--color-text-muted)] leading-relaxed pl-4">
+                  Actualment aquest lloc web no utilitza galetes tècniques pròpies. La navegació funciona correctament sense galetes per a funcionalitats bàsiques.
+                </p>
               </div>
-            </section>
+              <div>
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="w-2 h-2 rounded-full bg-[var(--color-accent)]" />
+                  <h3 className="text-sm font-semibold text-[var(--color-primary)]">Galetes analítiques (de tercers)</h3>
+                </div>
+                <div className="pl-4">
+                  <p className="text-sm text-[var(--color-text-muted)] leading-relaxed mb-3">
+                    Utilitzem <strong>Google Analytics 4</strong> per analitzar el comportament dels usuaris:
+                  </p>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                    {["Visitants i pàgines vistes", "Temps de permanència", "Profunditat de scroll", "Origen del trànsit", "Dispositiu i navegador", "Ubicació aproximada"].map((item) => (
+                      <div key={item} className="flex items-center gap-2 text-xs text-[var(--color-text-muted)]">
+                        <div className="w-1 h-1 rounded-full bg-[var(--color-accent)] shrink-0" />
+                        {item}
+                      </div>
+                    ))}
+                  </div>
+                  <div className="mt-4 bg-[var(--color-primary)]/5 rounded-lg px-3 py-2 inline-flex items-center gap-2">
+                    <span className="text-[10px] text-[var(--color-text-muted)]">ID de mesura:</span>
+                    <code className="text-xs font-mono text-[var(--color-primary)] font-semibold">G-SKH25BEE1T</code>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </SectionBlock>
 
-            {/* 3. Tipus de galetes */}
-            <section>
-              <h2 className="text-xl font-semibold text-[var(--color-primary)] mb-3">
-                3. Tipus de galetes segons la seva finalitat
-              </h2>
-
-              <h3 className="text-lg font-medium text-[var(--color-primary)] mt-4 mb-2">
-                a) Galetes tècniques (necessàries)
-              </h3>
-              <p>
-                Actualment aquest lloc web no utilitza galetes tècniques pròpies. La
-                navegació funciona correctament sense emmagatzemar galetes al dispositiu
-                de l&apos;usuari per a funcionalitats bàsiques.
-              </p>
-
-              <h3 className="text-lg font-medium text-[var(--color-primary)] mt-4 mb-2">
-                b) Galetes analítiques (de tercers)
-              </h3>
-              <p>
-                Utilitzem <strong>Google Analytics 4</strong> (propietat de Google LLC)
-                per analitzar el comportament dels usuaris al lloc web. Aquestes galetes
-                ens permeten conèixer:
-              </p>
-              <ul className="list-disc pl-5 space-y-1 mt-2">
-                <li>El nombre de visitants i pàgines vistes.</li>
-                <li>El temps de permanència a cada pàgina.</li>
-                <li>La profunditat de desplaçament (scroll).</li>
-                <li>L&apos;origen del trànsit (cercadors, accés directe, etc.).</li>
-                <li>El dispositiu i navegador utilitzat.</li>
-                <li>La ubicació geogràfica aproximada.</li>
-              </ul>
-              <p className="mt-2">
-                Les dades recollides són anònimes i agregades. L&apos;identificador de
-                mesura és <code className="bg-gray-100 px-1.5 py-0.5 rounded text-xs">G-SKH25BEE1T</code>.
-              </p>
-            </section>
-
-            {/* 4. Transferències internacionals */}
-            <section>
-              <h2 className="text-xl font-semibold text-[var(--color-primary)] mb-3">
-                4. Transferències internacionals de dades
-              </h2>
-              <p>
-                Google Analytics pot transferir dades als servidors de Google als Estats
-                Units. Aquestes transferències estan emparades per les{" "}
-                <strong>Clàusules Contractuals Tipus</strong> (CCT) aprovades per la
-                Comissió Europea, que garanteixen un nivell adequat de protecció de les
-                dades personals. Podeu consultar la política de privacitat de Google a{" "}
-                <a
-                  href="https://policies.google.com/privacy"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[var(--color-accent)] hover:underline"
-                >
-                  policies.google.com/privacy
+          {/* 04 */}
+          <SectionBlock num="04" title="Transferències internacionals de dades">
+            <div className="bg-[var(--color-accent)]/5 border border-[var(--color-accent)]/15 rounded-xl p-5">
+              <p className="text-sm text-[var(--color-text-muted)] leading-relaxed">
+                Google Analytics pot transferir dades als servidors de Google als Estats Units. Aquestes transferències estan emparades per les{" "}
+                <strong className="text-[var(--color-primary)]">Clàusules Contractuals Tipus (CCT)</strong> aprovades per la Comissió Europea. Consulteu la{" "}
+                <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-[var(--color-accent)] font-medium hover:underline">
+                  política de privacitat de Google →
                 </a>
-                .
               </p>
-            </section>
+            </div>
+          </SectionBlock>
 
-            {/* 5. Com gestionar les galetes */}
-            <section>
-              <h2 className="text-xl font-semibold text-[var(--color-primary)] mb-3">
-                5. Com gestionar i desactivar les galetes
-              </h2>
-              <p>
-                Podeu configurar el vostre navegador per acceptar, rebutjar o eliminar
-                les galetes. A continuació, us indiquem com fer-ho als navegadors més
-                habituals:
-              </p>
-              <ul className="list-disc pl-5 space-y-2 mt-3">
-                <li>
-                  <strong>Google Chrome:</strong> Configuració &rarr; Privadesa i seguretat &rarr; Galetes i altres dades dels llocs
-                </li>
-                <li>
-                  <strong>Mozilla Firefox:</strong> Opcions &rarr; Privadesa i seguretat &rarr; Galetes i dades del lloc
-                </li>
-                <li>
-                  <strong>Safari:</strong> Preferències &rarr; Privadesa &rarr; Gestió de dades del lloc web
-                </li>
-                <li>
-                  <strong>Microsoft Edge:</strong> Configuració &rarr; Privadesa, cerca i serveis &rarr; Galetes
-                </li>
-              </ul>
-              <p className="mt-3">
-                També podeu optar per no participar en el seguiment de Google Analytics
-                instal·lant el{" "}
-                <a
-                  href="https://tools.google.com/dlpage/gaoptout"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[var(--color-accent)] hover:underline"
-                >
+          {/* 05 */}
+          <SectionBlock num="05" title="Com gestionar i desactivar les galetes">
+            <p className="text-sm text-[var(--color-text-muted)] leading-relaxed mb-4">
+              Podeu configurar el vostre navegador per acceptar, rebutjar o eliminar les galetes:
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
+              {browsers.map((browser) => (
+                <div key={browser.name} className="bg-white/60 rounded-xl p-4 border border-[var(--color-primary)]/5">
+                  <span className="text-sm font-semibold text-[var(--color-primary)]">{browser.name}</span>
+                  <p className="text-xs text-[var(--color-text-muted)] mt-1">{browser.path}</p>
+                </div>
+              ))}
+            </div>
+            <div className="flex gap-3 items-start bg-white/60 rounded-xl p-4 border border-[var(--color-primary)]/5">
+              <svg className="w-5 h-5 text-[var(--color-accent)] mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
+              </svg>
+              <p className="text-sm text-[var(--color-text-muted)]">
+                També podeu instal·lar el{" "}
+                <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer" className="text-[var(--color-accent)] font-medium hover:underline">
                   complement de desactivació de Google Analytics
                 </a>{" "}
                 al vostre navegador.
               </p>
-              <div className="mt-4 p-4 bg-amber-50 border border-amber-200 rounded-lg text-sm">
-                <strong>Nota:</strong> Si desactiveu les galetes, el lloc web continuarà
-                funcionant correctament, ja que no utilitzem galetes tècniques necessàries
-                per a la navegació bàsica.
-              </div>
-            </section>
-
-            {/* 6. Base jurídica */}
-            <section>
-              <h2 className="text-xl font-semibold text-[var(--color-primary)] mb-3">
-                6. Base jurídica
-              </h2>
-              <p>
-                La base legal per a l&apos;ús de galetes analítiques és el{" "}
-                <strong>consentiment</strong> de l&apos;usuari (art. 6.1.a RGPD i
-                art. 22.2 de la Llei 34/2002 de Serveis de la Societat de la
-                Informació i de Comerç Electrònic - LSSI-CE).
+            </div>
+            <div className="mt-4 bg-amber-50 border border-amber-200/50 rounded-xl p-4 flex gap-3 items-start">
+              <svg className="w-5 h-5 text-amber-500 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+              </svg>
+              <p className="text-sm text-[var(--color-text-muted)]">
+                Si desactiveu les galetes, el lloc web continuarà funcionant correctament.
               </p>
-            </section>
+            </div>
+          </SectionBlock>
 
-            {/* 7. Actualització */}
-            <section>
-              <h2 className="text-xl font-semibold text-[var(--color-primary)] mb-3">
-                7. Actualització d&apos;aquesta política
-              </h2>
-              <p>
-                GLLG es reserva el dret d&apos;actualitzar aquesta política de cookies
-                en qualsevol moment per adaptar-la a canvis legislatius, tècnics o en
-                les galetes utilitzades. Es recomana revisar-la periòdicament.
-              </p>
-            </section>
+          {/* 06 */}
+          <SectionBlock num="06" title="Base jurídica">
+            <p className="text-sm text-[var(--color-text-muted)] leading-relaxed">
+              La base legal per a l&apos;ús de galetes analítiques és el <strong className="text-[var(--color-primary)]">consentiment</strong> de l&apos;usuari (art. 6.1.a RGPD i art. 22.2 de la Llei 34/2002 LSSI-CE).
+            </p>
+          </SectionBlock>
 
-            {/* 8. Contacte */}
-            <section>
-              <h2 className="text-xl font-semibold text-[var(--color-primary)] mb-3">
-                8. Contacte
-              </h2>
-              <p>
-                Per a qualsevol consulta relacionada amb les galetes o la privacitat,
-                podeu contactar-nos a:
-              </p>
-              <ul className="list-none pl-0 mt-2 space-y-1">
-                <li>
-                  <strong>Correu:</strong>{" "}
-                  <a href="mailto:gllg@geeconomics.com" className="text-[var(--color-accent)] hover:underline">
+          {/* 07 */}
+          <SectionBlock num="07" title="Actualització d'aquesta política">
+            <p className="text-sm text-[var(--color-text-muted)] leading-relaxed">
+              GLLG es reserva el dret d&apos;actualitzar aquesta política en qualsevol moment per adaptar-la a canvis legislatius o tècnics. Es recomana revisar-la periòdicament.
+            </p>
+          </SectionBlock>
+
+          {/* 08 */}
+          <SectionBlock num="08" title="Contacte">
+            <p className="text-sm text-[var(--color-text-muted)] leading-relaxed mb-4">
+              Per a qualsevol consulta relacionada amb les galetes o la privacitat:
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-5">
+              <div className="bg-white/60 rounded-xl p-4 border border-[var(--color-primary)]/5">
+                <span className="text-[10px] uppercase tracking-[0.15em] text-[var(--color-accent)] font-semibold">Email</span>
+                <p className="text-sm mt-1">
+                  <a href="mailto:gllg@geeconomics.com" className="text-[var(--color-primary)] font-medium hover:text-[var(--color-accent)] transition-colors">
                     gllg@geeconomics.com
                   </a>
-                </li>
-                <li>
-                  <strong>Telèfon:</strong> 932 119 744
-                </li>
-                <li>
-                  <strong>Adreça:</strong> Passatge de Forasté, 4, Bis, Local 7, 08022 Barcelona
-                </li>
-              </ul>
-              <p className="mt-4">
-                Per a més informació sobre el tractament de dades personals, consulteu
-                la nostra{" "}
-                <Link href="/politica-privacitat" className="text-[var(--color-accent)] hover:underline font-medium">
-                  Política de Privacitat
+                </p>
+              </div>
+              <div className="bg-white/60 rounded-xl p-4 border border-[var(--color-primary)]/5">
+                <span className="text-[10px] uppercase tracking-[0.15em] text-[var(--color-accent)] font-semibold">Telèfon</span>
+                <p className="text-sm mt-1 text-[var(--color-text-dark)] font-medium">932 119 744</p>
+              </div>
+              <div className="bg-white/60 rounded-xl p-4 border border-[var(--color-primary)]/5">
+                <span className="text-[10px] uppercase tracking-[0.15em] text-[var(--color-accent)] font-semibold">Adreça</span>
+                <p className="text-xs mt-1 text-[var(--color-text-dark)] font-medium leading-relaxed">Passatge de Forasté, 4, Bis, Local 7, 08022 Barcelona</p>
+              </div>
+            </div>
+            <div className="bg-[var(--color-primary)]/5 rounded-xl p-4">
+              <p className="text-sm text-[var(--color-text-muted)]">
+                Per a més informació sobre el tractament de dades, consulteu la nostra{" "}
+                <Link href="/politica-privacitat" className="text-[var(--color-accent)] font-semibold hover:underline">
+                  Política de Privacitat →
                 </Link>
-                .
               </p>
-            </section>
-          </div>
+            </div>
+          </SectionBlock>
+
         </div>
       </main>
       <Footer />
