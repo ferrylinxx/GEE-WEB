@@ -1,0 +1,199 @@
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+
+export default function NotFound() {
+  const t = useTranslations("notFound");
+  const navT = useTranslations("nav");
+
+  return (
+    <>
+      <Navbar />
+      <main className="min-h-screen relative overflow-hidden">
+        {/* Full dark premium background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[var(--color-primary)] via-[var(--color-primary-dark)] to-[#050e18]" />
+
+        {/* Animated gradient orbs */}
+        <div className="absolute top-1/4 -left-40 w-[500px] h-[500px] rounded-full bg-[var(--color-accent)]/8 blur-[140px] animate-float-slow" />
+        <div className="absolute bottom-1/4 -right-40 w-[600px] h-[600px] rounded-full bg-[var(--color-primary-light)]/10 blur-[160px] animate-float" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] rounded-full bg-[var(--color-accent)]/5 blur-[100px]" />
+
+        {/* Grid pattern */}
+        <div
+          className="absolute inset-0 opacity-[0.04]"
+          style={{
+            backgroundImage:
+              "linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px)",
+            backgroundSize: "80px 80px",
+          }}
+        />
+
+        {/* Dot pattern layer */}
+        <div
+          className="absolute inset-0 opacity-[0.03]"
+          style={{
+            backgroundImage: "radial-gradient(circle, rgba(200,169,110,0.4) 1px, transparent 1px)",
+            backgroundSize: "32px 32px",
+          }}
+        />
+
+        {/* Content */}
+        <div className="relative z-10 flex items-center justify-center min-h-screen pt-20 pb-16">
+          <div className="mx-auto max-w-5xl px-6 lg:px-8 w-full">
+            <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+              {/* Left: Illustration */}
+              <div className="flex justify-center lg:justify-end order-2 lg:order-1">
+                <div className="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-96 lg:h-96">
+                  {/* Outer ring */}
+                  <div className="absolute inset-0 rounded-full border border-white/5" />
+                  <div className="absolute inset-4 rounded-full border border-white/5" />
+                  <div className="absolute inset-8 rounded-full border border-[var(--color-accent)]/10" />
+
+                  {/* Orbiting dot */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="animate-orbit">
+                      <div className="w-3 h-3 rounded-full bg-[var(--color-accent)] shadow-lg shadow-[var(--color-accent)]/50" />
+                    </div>
+                  </div>
+
+                  {/* Center illustration - compass / search */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="relative animate-float">
+                      {/* Glowing backdrop */}
+                      <div className="absolute -inset-8 rounded-full bg-[var(--color-accent)]/5 blur-xl" />
+
+                      {/* Main icon container */}
+                      <div className="relative w-32 h-32 sm:w-36 sm:h-36 rounded-3xl bg-gradient-to-br from-white/10 to-white/[0.02] backdrop-blur-sm border border-white/10 flex items-center justify-center shadow-2xl">
+                        {/* Search/compass SVG */}
+                        <svg className="w-16 h-16 sm:w-20 sm:h-20" viewBox="0 0 80 80" fill="none">
+                          {/* Compass circle */}
+                          <circle cx="40" cy="40" r="28" stroke="rgba(200,169,110,0.3)" strokeWidth="1.5" strokeDasharray="4 6" />
+                          <circle cx="40" cy="40" r="20" stroke="rgba(200,169,110,0.5)" strokeWidth="1" />
+
+                          {/* Compass needle */}
+                          <path d="M40 20 L43 38 L40 42 L37 38 Z" fill="rgba(200,169,110,0.8)" />
+                          <path d="M40 60 L43 42 L40 38 L37 42 Z" fill="rgba(200,169,110,0.3)" />
+
+                          {/* Center dot */}
+                          <circle cx="40" cy="40" r="3" fill="#c8a96e" />
+
+                          {/* Cardinal marks */}
+                          <line x1="40" y1="10" x2="40" y2="14" stroke="rgba(255,255,255,0.4)" strokeWidth="2" strokeLinecap="round" />
+                          <line x1="40" y1="66" x2="40" y2="70" stroke="rgba(255,255,255,0.2)" strokeWidth="2" strokeLinecap="round" />
+                          <line x1="10" y1="40" x2="14" y2="40" stroke="rgba(255,255,255,0.2)" strokeWidth="2" strokeLinecap="round" />
+                          <line x1="66" y1="40" x2="70" y2="40" stroke="rgba(255,255,255,0.2)" strokeWidth="2" strokeLinecap="round" />
+
+                          {/* Question mark overlay */}
+                          <text x="52" y="28" fontSize="18" fontWeight="bold" fill="rgba(200,169,110,0.6)" fontFamily="sans-serif">?</text>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Floating particles */}
+                  <div className="absolute top-8 right-12 w-2 h-2 rounded-full bg-[var(--color-accent)]/40 animate-float" style={{ animationDelay: "1s" }} />
+                  <div className="absolute bottom-16 left-8 w-1.5 h-1.5 rounded-full bg-white/20 animate-float-slow" style={{ animationDelay: "2s" }} />
+                  <div className="absolute top-1/3 left-4 w-1 h-1 rounded-full bg-[var(--color-accent)]/30 animate-float" style={{ animationDelay: "0.5s" }} />
+                  <div className="absolute bottom-1/4 right-6 w-2 h-2 rounded-full bg-white/10 animate-float-slow" style={{ animationDelay: "3s" }} />
+                  <div className="absolute top-12 left-1/3 w-1.5 h-1.5 rounded-full bg-[var(--color-accent)]/20 animate-float" style={{ animationDelay: "1.5s" }} />
+                </div>
+              </div>
+
+              {/* Right: Text content */}
+              <div className="order-1 lg:order-2 text-center lg:text-left">
+                {/* Badge */}
+                <div className="inline-flex items-center gap-3 mb-6">
+                  <span className="w-12 h-px bg-gradient-to-r from-[var(--color-accent)] to-transparent" />
+                  <span className="text-xs font-semibold tracking-[0.3em] uppercase text-[var(--color-accent)]">
+                    Error 404
+                  </span>
+                </div>
+
+                {/* Large 404 */}
+                <div className="relative mb-6">
+                  <p className="text-8xl sm:text-9xl lg:text-[11rem] font-black leading-none tracking-tighter text-transparent bg-clip-text animate-shimmer"
+                    style={{
+                      backgroundImage: "linear-gradient(90deg, rgba(255,255,255,0.08) 0%, rgba(200,169,110,0.25) 25%, rgba(255,255,255,0.15) 50%, rgba(200,169,110,0.25) 75%, rgba(255,255,255,0.08) 100%)",
+                      WebkitBackgroundClip: "text",
+                      backgroundClip: "text",
+                    }}
+                  >
+                    404
+                  </p>
+                  {/* Accent line */}
+                  <div className="h-1 w-24 lg:w-32 bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-accent-light)] rounded-full mx-auto lg:mx-0 mt-2" />
+                </div>
+
+                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-5 tracking-tight leading-tight">
+                  {t("heading")}
+                </h1>
+
+                <p className="text-lg text-white/50 max-w-md mx-auto lg:mx-0 mb-3 leading-relaxed">
+                  {t("description")}
+                </p>
+                <p className="text-sm text-white/30 max-w-sm mx-auto lg:mx-0 mb-10">
+                  {t("subdescription")}
+                </p>
+
+                {/* Action buttons */}
+                <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center">
+                  <Link
+                    href="/"
+                    className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-accent-light)] text-white font-semibold rounded-xl hover:shadow-xl hover:shadow-[var(--color-accent)]/30 transition-all duration-300 hover:-translate-y-0.5"
+                  >
+                    <svg className="w-5 h-5 transition-transform group-hover:-translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+                    </svg>
+                    {t("backHome")}
+                  </Link>
+                  <Link
+                    href="/contacte"
+                    className="inline-flex items-center gap-2 px-8 py-4 border-2 border-white/15 text-white/80 font-semibold rounded-xl hover:bg-white/5 hover:border-[var(--color-accent)]/40 hover:text-white transition-all duration-300 backdrop-blur-sm"
+                  >
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+                    </svg>
+                    {t("contactUs")}
+                  </Link>
+                </div>
+
+                {/* Quick nav section cards */}
+                <div className="mt-14 pt-8 border-t border-white/10">
+                  <p className="text-xs uppercase tracking-[0.25em] text-white/25 mb-5 font-medium">
+                    {t("sections")}
+                  </p>
+                  <div className="flex flex-wrap justify-center lg:justify-start gap-3">
+                    {[
+                      { href: "/presentacio" as const, label: navT("presentation"), icon: "M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" },
+                      { href: "/que-fem" as const, label: navT("services"), icon: "M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5m.75-9l3-3 2.148 2.148A12.061 12.061 0 0116.5 7.605" },
+                      { href: "/qui-som" as const, label: navT("team"), icon: "M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" },
+                      { href: "/clients" as const, label: navT("clients"), icon: "M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3H21m-3.75 3H21" },
+                    ].map((link) => (
+                      <Link
+                        key={link.href}
+                        href={link.href}
+                        className="group flex items-center gap-2.5 px-5 py-2.5 rounded-xl bg-white/[0.03] border border-white/10 hover:border-[var(--color-accent)]/30 hover:bg-white/[0.06] transition-all duration-300 backdrop-blur-sm"
+                      >
+                        <svg className="w-4 h-4 text-[var(--color-accent)]/60 group-hover:text-[var(--color-accent)] transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d={link.icon} />
+                        </svg>
+                        <span className="text-sm text-white/50 group-hover:text-white/80 transition-colors font-medium">
+                          {link.label}
+                        </span>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom gradient fade */}
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#050e18] to-transparent z-[5]" />
+      </main>
+      <Footer />
+    </>
+  );
+}

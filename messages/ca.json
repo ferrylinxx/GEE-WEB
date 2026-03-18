@@ -1,0 +1,205 @@
+{
+  "nav": {
+    "home": "Inici",
+    "presentation": "Presentació",
+    "services": "Què fem",
+    "team": "Qui som",
+    "clients": "Clients",
+    "contact": "Contacte",
+    "menu": "Menú"
+  },
+  "hero": {
+    "since": "Des de 1989",
+    "title1": "GABINET",
+    "title2": "ESTUDIS",
+    "title3": "ECONÒMICS",
+    "contact": "Contacte",
+    "prevSlide": "Diapositiva anterior",
+    "nextSlide": "Diapositiva següent",
+    "slideLabel": "Diapositiva {num}",
+    "carouselLabel": "Presentació de serveis",
+    "slides": {
+      "0": {
+        "subtitle": "Anàlisi Estratègica",
+        "text": "Desenvolupem treballs dins el camp de l'anàlisi estratègica, urbanístic, empresarial i territorial.",
+        "cta": "Què fem"
+      },
+      "1": {
+        "subtitle": "Impacte Econòmic",
+        "text": "Valorem i quantifiquem l'impacte net que comporta sobre el benestar de la població la posada en funcionament d'una determinada actuació.",
+        "cta": "Presentació"
+      },
+      "2": {
+        "subtitle": "Desenvolupament Urbà",
+        "text": "Gestionem de forma integral i multidisciplinar els diferents aspectes econòmics, urbanístics i socials dels treballs de desenvolupament urbà.",
+        "cta": "Qui som"
+      }
+    }
+  },
+  "footer": {
+    "description": "Des de 1989, assessorant institucions públiques i empreses privades en l'àmbit econòmic, urbanístic i social.",
+    "navigation": "Navegació",
+    "contact": "Contacte",
+    "address": "Passatge de Forasté, 4, Bis,",
+    "addressCity": "Local 7, 08022 Barcelona",
+    "phone": "+34 932 119 744",
+    "email": "gllg@geeconomics.com",
+    "copyright": "© {year} Gabinet Estudis Econòmics, GLLG. Tots els drets reservats.",
+    "privacy": "Política de privacitat",
+    "cookies": "Política de cookies"
+  },
+  "presentacio": {
+    "since": "Des de 1989",
+    "title": "Presentació",
+    "heroText": "Gabinet Estudis Econòmics va ser fundat l'any 1989 pels economistes Pere Lleonart, Àlvar Garola i l'arquitecte Àngels Garcia, per a la realització d'estudis econòmics.",
+    "quote": "Durant tots aquests anys hem mantingut la mateixa filosofia de treball adaptant-nos a la realitat de cada moment i utilitzant diferents metodologies.",
+    "experience": "Amb tants anys de trajectòria hem acumulat molta experiència i un coneixement molt valuós a l'hora d'afrontar nous projectes de forma rigorosa, independent i a la mida de cada client.",
+    "discoverCta": "Descobreix què fem",
+    "awardsTitle": "Reconeixements",
+    "award1Title": "Premi Nacional d'Urbanisme",
+    "award1Desc": "Pel PGOU d'Hostalric (Girona)",
+    "award2Title": "Premi Catalunya d'Economia",
+    "award2Desc": "Per l'Institut d'Estudis Catalans, a la seva primera convocatòria",
+    "award3Title": "Despatx Professional de l'any",
+    "award3Desc": "Pel Col·legi d'Economistes de Catalunya (2008)",
+    "ctaServices": "Què fem",
+    "ctaContact": "Contacta'ns"
+  },
+  "queFem": {
+    "badge": "Serveis",
+    "title": "Què fem",
+    "heroText": "El nostre objectiu és ajudar als nostres clients sempre amb la idea d'assessorar i acompanyar a la presa de decisions amb imparcialitat i de forma molt rigorosa, adaptant-nos a les necessitats específiques de cada encàrrec amb un servei a mida.",
+    "services": {
+      "0": {
+        "title": "Anàlisi Estratègica",
+        "desc": "Anàlisi estratègica de projectes amb rigor i independència per a la presa de decisions informada."
+      },
+      "1": {
+        "title": "Impacte Econòmic",
+        "desc": "Estudi de l'impacte econòmic d'infraestructures i projectes sobre el territori i la població."
+      },
+      "2": {
+        "title": "Avaluació Urbanística",
+        "desc": "Avaluació socioeconòmica de temes urbanístics i desenvolupament urbà integral."
+      },
+      "3": {
+        "title": "Valoració d'Intangibles",
+        "desc": "Valoració d'intangibles i del medi ambient amb metodologies quantitatives i qualitatives."
+      },
+      "4": {
+        "title": "Dictàmens Pericials",
+        "desc": "Elaboració de dictàmens pericials amb rigor tècnic per a processos judicials i arbitratges."
+      },
+      "5": {
+        "title": "Servei a Mida",
+        "desc": "Mètodes i sistemes adaptables a cada situació i àmbit territorial, amb esperit d'artesà."
+      }
+    },
+    "ctaContact": "Contacta'ns",
+    "ctaClients": "Clients"
+  },
+  "quiSom": {
+    "badge": "Equip",
+    "title": "Qui som",
+    "team": {
+      "0": {
+        "name": "Àlvar Garola Crespo",
+        "role": "Director Tècnic",
+        "bio": "Economista per la Universitat de Barcelona. Treballa al Gabinet des dels seus inicis l'any 1989. Ha realitzat estudis de postgrau sobre l'impacte econòmic de les infraestructures, i és Diploma d'Estudis Avançats en Infraestructures de Transport i Gestió del Territori per la UPC. Investigador a la Universitat de Stanford, on, sota la direcció del professor Henry Levin, va treballar en l'aplicació de tècniques de prospectiva en l'àmbit de l'economia territorial i urbana.",
+        "initials": "AG"
+      },
+      "1": {
+        "name": "Àngels Garcia Hernández",
+        "role": "Directora Tècnica Adjunta",
+        "bio": "Treballa al Gabinet des dels seus inicis l'any 1989. Arquitecta per l'Escola Tècnica Superior d'Arquitectura de Barcelona. Va iniciar la seva labor professional al despatx de l'arquitecte i professor de Projectes Arquitectònics de la ETSAB Joan Arias Roig, amb el que ha continuat col·laborant en diferents projectes d'arquitectura.",
+        "initials": "ÀG"
+      },
+      "2": {
+        "name": "Gemma Vélez Sabater",
+        "role": "Analista",
+        "bio": "Treballa al Gabinet des de l'any 1996. Diplomada en Ciències Empresarials per la Universitat Pompeu Fabra. Llicenciada en Administració i Direcció d'Empreses per la Universitat Autònoma de Bellaterra.",
+        "initials": "GV"
+      },
+      "3": {
+        "name": "Bernat Arias",
+        "role": "Consultor",
+        "bio": "Treballa al Gabinet des de l'any 2017. Llicenciat en Economia per la Universitat de Barcelona. Màster recerca, especialitat Història del pensament econòmic per la Universitat París 1 Panthéon-Sorbonne. Ha treballat al sector públic.",
+        "initials": "BA"
+      }
+    }
+  },
+  "clients": {
+    "badge": "Per a qui treballem",
+    "title": "Clients",
+    "heroText": "La nostra independència i imparcialitat ens permet treballar tant per a institucions públiques i privades, com per a empreses.",
+    "features": {
+      "0": {
+        "title": "Independència i Imparcialitat",
+        "desc": "La nostra independència i imparcialitat ens permet treballar tant per a institucions públiques i privades, com per a empreses."
+      },
+      "1": {
+        "title": "Col·laboracions Professionals",
+        "desc": "Hem establert col·laboracions estretes amb altres despatxos professionals especialitzats i bufets d'advocats."
+      },
+      "2": {
+        "title": "Qualitat i Confidencialitat",
+        "desc": "Estem compromesos amb els més alts estàndards de qualitat i proporcionem un elevat nivell de servei mitjançant el tracte personalitzat."
+      },
+      "3": {
+        "title": "Valoracions Pericials",
+        "desc": "Col·laborem amb diferents bufets d'advocats realitzant valoracions pericials de forma rigorosa i independent."
+      }
+    }
+  },
+  "contacte": {
+    "badge": "Parlem?",
+    "title": "Contacte",
+    "companyName": "Gabinet d'Estudis Econòmics",
+    "addressLabel": "Adreça",
+    "address": "Passatge de Forasté, 4, Bis, Local 7",
+    "addressCity": "08022 Barcelona",
+    "phoneLabel": "Telèfon",
+    "phone": "932 11 97 44",
+    "emailLabel": "Correu electrònic",
+    "email": "gllg@geeconomics.com",
+    "mapTitle": "Ubicació Gabinet Estudis Econòmics",
+    "formNom": "Nom",
+    "formCognom": "Cognom",
+    "formEmail": "Correu Electrònic",
+    "formEmpresa": "Empresa",
+    "formTelefon": "Telèfon",
+    "formTelefonTitle": "Introdueix un número de telèfon vàlid",
+    "formMissatge": "Comentari o Missatge",
+    "formRequired": "*",
+    "successMsg": "Missatge enviat correctament! Ens posarem en contacte amb tu aviat.",
+    "errorMsg": "Error enviant el missatge. Torna-ho a intentar o contacta'ns per telèfon.",
+    "privacyCheckbox": "He llegit i accepto les condicions contingudes en la <link>Política de Privacitat</link> sobre el tractament de dades personals.",
+    "commsCheckbox": "Accepto rebre comunicacions de Gabinet Estudis Economics (GLLG) relacionada amb els nostres serveis",
+    "submitBtn": "Enviar missatge",
+    "sendingBtn": "Enviant...",
+    "recaptchaNotice": "Aquest lloc està protegit per reCAPTCHA i s'apliquen la <privacy>Política de Privacitat</privacy> i els <terms>Termes de Servei</terms> de Google."
+  },
+  "notFound": {
+    "title": "Pàgina no trobada",
+    "heading": "Pàgina no trobada",
+    "description": "Ho sentim, la pàgina que busqueu no existeix o ha estat moguda.",
+    "subdescription": "Podeu tornar a la pàgina principal o explorar les nostres seccions a través del menú de navegació.",
+    "backHome": "Tornar a l'inici",
+    "contactUs": "Contactar-nos",
+    "sections": "Seccions principals"
+  },
+  "metadata": {
+    "homeTitle": "Gabinet Estudis Econòmics | Consultoria Econòmica a Barcelona",
+    "homeDescription": "Gabinet Estudis Econòmics (GEE) - Des de 1989 desenvolupem treballs d'anàlisi estratègica, impacte econòmic, avaluació urbanística i dictàmens pericials a Barcelona.",
+    "presentacioTitle": "Presentació",
+    "presentacioDesc": "Gabinet Estudis Econòmics, fundat el 1989 a Barcelona. Més de 30 anys d'experiència en consultoria econòmica, guanyadors del Premi Catalunya d'Economia i Premi Nacional d'Urbanisme.",
+    "queFemTitle": "Què fem",
+    "queFemDesc": "Serveis de consultoria econòmica: anàlisi estratègica, estudis d'impacte econòmic, avaluació urbanística, valoració d'intangibles i dictàmens pericials a Barcelona.",
+    "quiSomTitle": "Qui som",
+    "quiSomDesc": "Coneix l'equip de Gabinet Estudis Econòmics: economistes i arquitectes especialitzats en consultoria econòmica i territorial a Barcelona des de 1989.",
+    "clientsTitle": "Clients",
+    "clientsDesc": "Treballem per a institucions públiques, ajuntaments, empreses privades i organismes amb independència i imparcialitat. Consultoria econòmica de confiança a Barcelona.",
+    "contacteTitle": "Contacte",
+    "contacteDesc": "Contacta amb Gabinet Estudis Econòmics a Barcelona. Passatge de Forasté, 4, Bis, Local 7, 08022 Barcelona. Consultoria econòmica personalitzada."
+  }
+}

@@ -1,0 +1,205 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "presentation": "Presentación",
+    "services": "Qué hacemos",
+    "team": "Quiénes somos",
+    "clients": "Clientes",
+    "contact": "Contacto",
+    "menu": "Menú"
+  },
+  "hero": {
+    "since": "Desde 1989",
+    "title1": "GABINETE",
+    "title2": "ESTUDIOS",
+    "title3": "ECONÓMICOS",
+    "contact": "Contacto",
+    "prevSlide": "Diapositiva anterior",
+    "nextSlide": "Diapositiva siguiente",
+    "slideLabel": "Diapositiva {num}",
+    "carouselLabel": "Presentación de servicios",
+    "slides": {
+      "0": {
+        "subtitle": "Análisis Estratégico",
+        "text": "Desarrollamos trabajos en el campo del análisis estratégico, urbanístico, empresarial y territorial.",
+        "cta": "Qué hacemos"
+      },
+      "1": {
+        "subtitle": "Impacto Económico",
+        "text": "Valoramos y cuantificamos el impacto neto que conlleva sobre el bienestar de la población la puesta en funcionamiento de una determinada actuación.",
+        "cta": "Presentación"
+      },
+      "2": {
+        "subtitle": "Desarrollo Urbano",
+        "text": "Gestionamos de forma integral y multidisciplinar los diferentes aspectos económicos, urbanísticos y sociales de los trabajos de desarrollo urbano.",
+        "cta": "Quiénes somos"
+      }
+    }
+  },
+  "footer": {
+    "description": "Desde 1989, asesorando a instituciones públicas y empresas privadas en el ámbito económico, urbanístico y social.",
+    "navigation": "Navegación",
+    "contact": "Contacto",
+    "address": "Passatge de Forasté, 4, Bis,",
+    "addressCity": "Local 7, 08022 Barcelona",
+    "phone": "+34 932 119 744",
+    "email": "gllg@geeconomics.com",
+    "copyright": "© {year} Gabinete Estudios Económicos, GLLG. Todos los derechos reservados.",
+    "privacy": "Política de privacidad",
+    "cookies": "Política de cookies"
+  },
+  "presentacio": {
+    "since": "Desde 1989",
+    "title": "Presentación",
+    "heroText": "Gabinete Estudios Económicos fue fundado en 1989 por los economistas Pere Lleonart, Àlvar Garola y la arquitecta Àngels Garcia, para la realización de estudios económicos.",
+    "quote": "Durante todos estos años hemos mantenido la misma filosofía de trabajo adaptándonos a la realidad de cada momento y utilizando diferentes metodologías.",
+    "experience": "Con tantos años de trayectoria hemos acumulado mucha experiencia y un conocimiento muy valioso a la hora de afrontar nuevos proyectos de forma rigurosa, independiente y a medida de cada cliente.",
+    "discoverCta": "Descubre qué hacemos",
+    "awardsTitle": "Reconocimientos",
+    "award1Title": "Premio Nacional de Urbanismo",
+    "award1Desc": "Por el PGOU de Hostalric (Girona)",
+    "award2Title": "Premio Cataluña de Economía",
+    "award2Desc": "Por el Institut d'Estudis Catalans, en su primera convocatoria",
+    "award3Title": "Despacho Profesional del año",
+    "award3Desc": "Por el Colegio de Economistas de Cataluña (2008)",
+    "ctaServices": "Qué hacemos",
+    "ctaContact": "Contáctenos"
+  },
+  "queFem": {
+    "badge": "Servicios",
+    "title": "Qué hacemos",
+    "heroText": "Nuestro objetivo es ayudar a nuestros clientes siempre con la idea de asesorar y acompañar en la toma de decisiones con imparcialidad y de forma muy rigurosa, adaptándonos a las necesidades específicas de cada encargo con un servicio a medida.",
+    "services": {
+      "0": {
+        "title": "Análisis Estratégico",
+        "desc": "Análisis estratégico de proyectos con rigor e independencia para la toma de decisiones informada."
+      },
+      "1": {
+        "title": "Impacto Económico",
+        "desc": "Estudio del impacto económico de infraestructuras y proyectos sobre el territorio y la población."
+      },
+      "2": {
+        "title": "Evaluación Urbanística",
+        "desc": "Evaluación socioeconómica de temas urbanísticos y desarrollo urbano integral."
+      },
+      "3": {
+        "title": "Valoración de Intangibles",
+        "desc": "Valoración de intangibles y del medio ambiente con metodologías cuantitativas y cualitativas."
+      },
+      "4": {
+        "title": "Dictámenes Periciales",
+        "desc": "Elaboración de dictámenes periciales con rigor técnico para procesos judiciales y arbitrajes."
+      },
+      "5": {
+        "title": "Servicio a Medida",
+        "desc": "Métodos y sistemas adaptables a cada situación y ámbito territorial, con espíritu artesano."
+      }
+    },
+    "ctaContact": "Contáctenos",
+    "ctaClients": "Clientes"
+  },
+  "quiSom": {
+    "badge": "Equipo",
+    "title": "Quiénes somos",
+    "team": {
+      "0": {
+        "name": "Àlvar Garola Crespo",
+        "role": "Director Técnico",
+        "bio": "Economista por la Universidad de Barcelona. Trabaja en el Gabinete desde sus inicios en 1989. Ha realizado estudios de posgrado sobre el impacto económico de las infraestructuras, y es Diploma de Estudios Avanzados en Infraestructuras de Transporte y Gestión del Territorio por la UPC. Investigador en la Universidad de Stanford, donde, bajo la dirección del profesor Henry Levin, trabajó en la aplicación de técnicas de prospectiva en el ámbito de la economía territorial y urbana.",
+        "initials": "AG"
+      },
+      "1": {
+        "name": "Àngels Garcia Hernández",
+        "role": "Directora Técnica Adjunta",
+        "bio": "Trabaja en el Gabinete desde sus inicios en 1989. Arquitecta por la Escuela Técnica Superior de Arquitectura de Barcelona. Inició su labor profesional en el despacho del arquitecto y profesor de Proyectos Arquitectónicos de la ETSAB Joan Arias Roig, con el que ha continuado colaborando en diferentes proyectos de arquitectura.",
+        "initials": "ÀG"
+      },
+      "2": {
+        "name": "Gemma Vélez Sabater",
+        "role": "Analista",
+        "bio": "Trabaja en el Gabinete desde 1996. Diplomada en Ciencias Empresariales por la Universitat Pompeu Fabra. Licenciada en Administración y Dirección de Empresas por la Universitat Autònoma de Bellaterra.",
+        "initials": "GV"
+      },
+      "3": {
+        "name": "Bernat Arias",
+        "role": "Consultor",
+        "bio": "Trabaja en el Gabinete desde 2017. Licenciado en Economía por la Universidad de Barcelona. Máster en investigación, especialidad Historia del pensamiento económico por la Universidad París 1 Panthéon-Sorbonne. Ha trabajado en el sector público.",
+        "initials": "BA"
+      }
+    }
+  },
+  "clients": {
+    "badge": "Para quién trabajamos",
+    "title": "Clientes",
+    "heroText": "Nuestra independencia e imparcialidad nos permite trabajar tanto para instituciones públicas y privadas como para empresas.",
+    "features": {
+      "0": {
+        "title": "Independencia e Imparcialidad",
+        "desc": "Nuestra independencia e imparcialidad nos permite trabajar tanto para instituciones públicas y privadas como para empresas."
+      },
+      "1": {
+        "title": "Colaboraciones Profesionales",
+        "desc": "Hemos establecido colaboraciones estrechas con otros despachos profesionales especializados y bufetes de abogados."
+      },
+      "2": {
+        "title": "Calidad y Confidencialidad",
+        "desc": "Estamos comprometidos con los más altos estándares de calidad y proporcionamos un elevado nivel de servicio mediante el trato personalizado."
+      },
+      "3": {
+        "title": "Valoraciones Periciales",
+        "desc": "Colaboramos con diferentes bufetes de abogados realizando valoraciones periciales de forma rigurosa e independiente."
+      }
+    }
+  },
+  "contacte": {
+    "badge": "¿Hablamos?",
+    "title": "Contacto",
+    "companyName": "Gabinete de Estudios Económicos",
+    "addressLabel": "Dirección",
+    "address": "Passatge de Forasté, 4, Bis, Local 7",
+    "addressCity": "08022 Barcelona",
+    "phoneLabel": "Teléfono",
+    "phone": "932 11 97 44",
+    "emailLabel": "Correo electrónico",
+    "email": "gllg@geeconomics.com",
+    "mapTitle": "Ubicación Gabinete Estudios Económicos",
+    "formNom": "Nombre",
+    "formCognom": "Apellido",
+    "formEmail": "Correo Electrónico",
+    "formEmpresa": "Empresa",
+    "formTelefon": "Teléfono",
+    "formTelefonTitle": "Introduce un número de teléfono válido",
+    "formMissatge": "Comentario o Mensaje",
+    "formRequired": "*",
+    "successMsg": "¡Mensaje enviado correctamente! Nos pondremos en contacto contigo pronto.",
+    "errorMsg": "Error al enviar el mensaje. Inténtalo de nuevo o contáctanos por teléfono.",
+    "privacyCheckbox": "He leído y acepto las condiciones contenidas en la <link>Política de Privacidad</link> sobre el tratamiento de datos personales.",
+    "commsCheckbox": "Acepto recibir comunicaciones de Gabinete Estudios Económicos (GLLG) relacionadas con nuestros servicios",
+    "submitBtn": "Enviar mensaje",
+    "sendingBtn": "Enviando...",
+    "recaptchaNotice": "Este sitio está protegido por reCAPTCHA y se aplican la <privacy>Política de Privacidad</privacy> y los <terms>Términos de Servicio</terms> de Google."
+  },
+  "notFound": {
+    "title": "Página no encontrada",
+    "heading": "Página no encontrada",
+    "description": "Lo sentimos, la página que buscas no existe o ha sido movida.",
+    "subdescription": "Puedes volver a la página principal o explorar nuestras secciones a través del menú de navegación.",
+    "backHome": "Volver al inicio",
+    "contactUs": "Contactarnos",
+    "sections": "Secciones principales"
+  },
+  "metadata": {
+    "homeTitle": "Gabinete Estudios Económicos | Consultoría Económica en Barcelona",
+    "homeDescription": "Gabinete Estudios Económicos (GEE) - Desde 1989 desarrollamos trabajos de análisis estratégico, impacto económico, evaluación urbanística y dictámenes periciales en Barcelona.",
+    "presentacioTitle": "Presentación",
+    "presentacioDesc": "Gabinete Estudios Económicos, fundado en 1989 en Barcelona. Más de 30 años de experiencia en consultoría económica, ganadores del Premio Cataluña de Economía y Premio Nacional de Urbanismo.",
+    "queFemTitle": "Qué hacemos",
+    "queFemDesc": "Servicios de consultoría económica: análisis estratégico, estudios de impacto económico, evaluación urbanística, valoración de intangibles y dictámenes periciales en Barcelona.",
+    "quiSomTitle": "Quiénes somos",
+    "quiSomDesc": "Conoce al equipo de Gabinete Estudios Económicos: economistas y arquitectos especializados en consultoría económica y territorial en Barcelona desde 1989.",
+    "clientsTitle": "Clientes",
+    "clientsDesc": "Trabajamos para instituciones públicas, ayuntamientos, empresas privadas y organismos con independencia e imparcialidad. Consultoría económica de confianza en Barcelona.",
+    "contacteTitle": "Contacto",
+    "contacteDesc": "Contacta con Gabinete Estudios Económicos en Barcelona. Passatge de Forasté, 4, Bis, Local 7, 08022 Barcelona. Consultoría económica personalizada."
+  }
+}

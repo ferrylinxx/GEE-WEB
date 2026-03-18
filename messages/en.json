@@ -1,0 +1,205 @@
+{
+  "nav": {
+    "home": "Home",
+    "presentation": "About",
+    "services": "Services",
+    "team": "Team",
+    "clients": "Clients",
+    "contact": "Contact",
+    "menu": "Menu"
+  },
+  "hero": {
+    "since": "Since 1989",
+    "title1": "ECONOMIC",
+    "title2": "STUDIES",
+    "title3": "OFFICE",
+    "contact": "Contact",
+    "prevSlide": "Previous slide",
+    "nextSlide": "Next slide",
+    "slideLabel": "Slide {num}",
+    "carouselLabel": "Services presentation",
+    "slides": {
+      "0": {
+        "subtitle": "Strategic Analysis",
+        "text": "We develop work in the field of strategic, urban, business and territorial analysis.",
+        "cta": "Services"
+      },
+      "1": {
+        "subtitle": "Economic Impact",
+        "text": "We assess and quantify the net impact on people's welfare brought about by the implementation of a given project.",
+        "cta": "About"
+      },
+      "2": {
+        "subtitle": "Urban Development",
+        "text": "We manage in an integrated and multidisciplinary way the different economic, urban and social aspects of urban development projects.",
+        "cta": "Team"
+      }
+    }
+  },
+  "footer": {
+    "description": "Since 1989, advising public institutions and private companies in the economic, urban planning and social fields.",
+    "navigation": "Navigation",
+    "contact": "Contact",
+    "address": "Passatge de Forasté, 4, Bis,",
+    "addressCity": "Local 7, 08022 Barcelona",
+    "phone": "+34 932 119 744",
+    "email": "gllg@geeconomics.com",
+    "copyright": "© {year} Gabinet Estudis Econòmics, GLLG. All rights reserved.",
+    "privacy": "Privacy policy",
+    "cookies": "Cookie policy"
+  },
+  "presentacio": {
+    "since": "Since 1989",
+    "title": "About Us",
+    "heroText": "Gabinet Estudis Econòmics was founded in 1989 by economists Pere Lleonart, Àlvar Garola and architect Àngels Garcia, for the development of economic studies.",
+    "quote": "Throughout all these years we have maintained the same work philosophy, adapting to the reality of each moment and using different methodologies.",
+    "experience": "With so many years of experience, we have accumulated valuable knowledge when facing new projects in a rigorous, independent and tailored way for each client.",
+    "discoverCta": "Discover our services",
+    "awardsTitle": "Awards",
+    "award1Title": "National Urban Planning Award",
+    "award1Desc": "For the General Urban Plan of Hostalric (Girona)",
+    "award2Title": "Catalonia Economics Award",
+    "award2Desc": "By the Institut d'Estudis Catalans, in its first edition",
+    "award3Title": "Professional Office of the Year",
+    "award3Desc": "By the College of Economists of Catalonia (2008)",
+    "ctaServices": "Services",
+    "ctaContact": "Contact us"
+  },
+  "queFem": {
+    "badge": "Services",
+    "title": "What We Do",
+    "heroText": "Our goal is to help our clients with the idea of advising and accompanying decision-making with impartiality and rigor, adapting to the specific needs of each assignment with a tailored service.",
+    "services": {
+      "0": {
+        "title": "Strategic Analysis",
+        "desc": "Strategic analysis of projects with rigor and independence for informed decision-making."
+      },
+      "1": {
+        "title": "Economic Impact",
+        "desc": "Study of the economic impact of infrastructure and projects on the territory and population."
+      },
+      "2": {
+        "title": "Urban Evaluation",
+        "desc": "Socioeconomic evaluation of urban planning issues and comprehensive urban development."
+      },
+      "3": {
+        "title": "Intangible Valuation",
+        "desc": "Valuation of intangibles and the environment with quantitative and qualitative methodologies."
+      },
+      "4": {
+        "title": "Expert Reports",
+        "desc": "Preparation of expert reports with technical rigor for judicial proceedings and arbitrations."
+      },
+      "5": {
+        "title": "Tailored Service",
+        "desc": "Methods and systems adaptable to each situation and territorial scope, with a craftsman's spirit."
+      }
+    },
+    "ctaContact": "Contact us",
+    "ctaClients": "Clients"
+  },
+  "quiSom": {
+    "badge": "Team",
+    "title": "Who We Are",
+    "team": {
+      "0": {
+        "name": "Àlvar Garola Crespo",
+        "role": "Technical Director",
+        "bio": "Economist from the University of Barcelona. Has been working at the Office since its founding in 1989. He has completed postgraduate studies on the economic impact of infrastructure, and holds a Diploma in Advanced Studies in Transport Infrastructure and Land Management from UPC. Researcher at Stanford University, where, under the direction of Professor Henry Levin, he worked on the application of foresight techniques in territorial and urban economics.",
+        "initials": "AG"
+      },
+      "1": {
+        "name": "Àngels Garcia Hernández",
+        "role": "Deputy Technical Director",
+        "bio": "Has been working at the Office since its founding in 1989. Architect from the Barcelona School of Architecture (ETSAB). She began her professional career at the office of architect and ETSAB professor Joan Arias Roig, with whom she has continued collaborating on different architecture projects.",
+        "initials": "ÀG"
+      },
+      "2": {
+        "name": "Gemma Vélez Sabater",
+        "role": "Analyst",
+        "bio": "Has been working at the Office since 1996. Graduate in Business Studies from Universitat Pompeu Fabra. Degree in Business Administration and Management from the Universitat Autònoma de Bellaterra.",
+        "initials": "GV"
+      },
+      "3": {
+        "name": "Bernat Arias",
+        "role": "Consultant",
+        "bio": "Has been working at the Office since 2017. Degree in Economics from the University of Barcelona. Research Master's, specialising in History of Economic Thought from Université Paris 1 Panthéon-Sorbonne. Has worked in the public sector.",
+        "initials": "BA"
+      }
+    }
+  },
+  "clients": {
+    "badge": "Who we work for",
+    "title": "Clients",
+    "heroText": "Our independence and impartiality allow us to work for both public and private institutions as well as companies.",
+    "features": {
+      "0": {
+        "title": "Independence & Impartiality",
+        "desc": "Our independence and impartiality allow us to work for both public and private institutions as well as companies."
+      },
+      "1": {
+        "title": "Professional Collaborations",
+        "desc": "We have established close collaborations with other specialised professional firms and law offices."
+      },
+      "2": {
+        "title": "Quality & Confidentiality",
+        "desc": "We are committed to the highest quality standards and provide a high level of service through personalised attention."
+      },
+      "3": {
+        "title": "Expert Valuations",
+        "desc": "We collaborate with different law firms carrying out expert valuations rigorously and independently."
+      }
+    }
+  },
+  "contacte": {
+    "badge": "Let's talk?",
+    "title": "Contact",
+    "companyName": "Economic Studies Office",
+    "addressLabel": "Address",
+    "address": "Passatge de Forasté, 4, Bis, Local 7",
+    "addressCity": "08022 Barcelona",
+    "phoneLabel": "Phone",
+    "phone": "932 11 97 44",
+    "emailLabel": "Email",
+    "email": "gllg@geeconomics.com",
+    "mapTitle": "Location of Gabinet Estudis Econòmics",
+    "formNom": "First Name",
+    "formCognom": "Last Name",
+    "formEmail": "Email Address",
+    "formEmpresa": "Company",
+    "formTelefon": "Phone",
+    "formTelefonTitle": "Enter a valid phone number",
+    "formMissatge": "Comment or Message",
+    "formRequired": "*",
+    "successMsg": "Message sent successfully! We will get back to you soon.",
+    "errorMsg": "Error sending the message. Please try again or contact us by phone.",
+    "privacyCheckbox": "I have read and accept the conditions contained in the <link>Privacy Policy</link> regarding the processing of personal data.",
+    "commsCheckbox": "I agree to receive communications from Gabinet Estudis Econòmics (GLLG) related to our services",
+    "submitBtn": "Send message",
+    "sendingBtn": "Sending...",
+    "recaptchaNotice": "This site is protected by reCAPTCHA and Google's <privacy>Privacy Policy</privacy> and <terms>Terms of Service</terms> apply."
+  },
+  "notFound": {
+    "title": "Page not found",
+    "heading": "Page not found",
+    "description": "Sorry, the page you are looking for does not exist or has been moved.",
+    "subdescription": "You can return to the home page or explore our sections through the navigation menu.",
+    "backHome": "Back to home",
+    "contactUs": "Contact us",
+    "sections": "Main sections"
+  },
+  "metadata": {
+    "homeTitle": "Gabinet Estudis Econòmics | Economic Consulting in Barcelona",
+    "homeDescription": "Gabinet Estudis Econòmics (GEE) - Since 1989 we develop strategic analysis, economic impact, urban evaluation and expert reports in Barcelona.",
+    "presentacioTitle": "About Us",
+    "presentacioDesc": "Gabinet Estudis Econòmics, founded in 1989 in Barcelona. Over 30 years of experience in economic consulting, winners of the Catalonia Economics Award and National Urban Planning Award.",
+    "queFemTitle": "Services",
+    "queFemDesc": "Economic consulting services: strategic analysis, economic impact studies, urban evaluation, intangible valuation and expert reports in Barcelona.",
+    "quiSomTitle": "Team",
+    "quiSomDesc": "Meet the team of Gabinet Estudis Econòmics: economists and architects specialised in economic and territorial consulting in Barcelona since 1989.",
+    "clientsTitle": "Clients",
+    "clientsDesc": "We work for public institutions, councils, private companies and organisations with independence and impartiality. Trusted economic consulting in Barcelona.",
+    "contacteTitle": "Contact",
+    "contacteDesc": "Contact Gabinet Estudis Econòmics in Barcelona. Passatge de Forasté, 4, Bis, Local 7, 08022 Barcelona. Personalised economic consulting."
+  }
+}
