@@ -312,6 +312,11 @@ export default async function LocaleLayout({ children, params }: Props) {
     <html lang={locale} className="scroll-smooth">
       <head>
         <GoogleAnalytics />
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6269718356198501"
+          crossOrigin="anonymous"
+        />
         {routing.locales.map((l) => (
           <link
             key={l}
