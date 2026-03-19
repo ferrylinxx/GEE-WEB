@@ -101,7 +101,7 @@ export async function generateMetadata({
       description: t("homeDescription"),
       images: [
         {
-          url: `${siteUrl}${locale === "ca" ? "" : `/${locale}`}/opengraph-image`,
+          url: `${siteUrl}/${locale}/opengraph-image`,
           width: 1200,
           height: 630,
           alt: "Gabinet Estudis Econòmics",
@@ -112,7 +112,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: "Gabinet Estudis Econòmics",
       description: t("homeDescription"),
-      images: [`${siteUrl}${locale === "ca" ? "" : `/${locale}`}/opengraph-image`],
+      images: [`${siteUrl}/${locale}/opengraph-image`],
     },
     robots: {
       index: true,
