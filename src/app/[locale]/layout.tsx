@@ -101,7 +101,7 @@ export async function generateMetadata({
       description: t("homeDescription"),
       images: [
         {
-          url: "/opengraph-image",
+          url: `${siteUrl}${locale === "ca" ? "" : `/${locale}`}/opengraph-image`,
           width: 1200,
           height: 630,
           alt: "Gabinet Estudis Econòmics",
@@ -112,7 +112,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: "Gabinet Estudis Econòmics",
       description: t("homeDescription"),
-      images: ["/opengraph-image"],
+      images: [`${siteUrl}${locale === "ca" ? "" : `/${locale}`}/opengraph-image`],
     },
     robots: {
       index: true,
@@ -195,7 +195,7 @@ export default async function LocaleLayout({ children, params }: Props) {
     alternateName: "GEE",
     url: siteUrl,
     logo: `${siteUrl}/logo.png`,
-    image: `${siteUrl}/opengraph-image`,
+    image: `${siteUrl}/ca/opengraph-image`,
     description:
       "Consultoria econòmica especialitzada en anàlisi estratègica, impacte econòmic, avaluació urbanística i dictàmens pericials a Barcelona des de 1989.",
     telephone: "+34932119744",
