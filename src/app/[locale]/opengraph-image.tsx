@@ -1,4 +1,5 @@
 import { ImageResponse } from "next/og";
+import { logoBase64 } from "@/lib/og-logo";
 
 export const runtime = "edge";
 export const alt = "Gabinet Estudis Econòmics - Consultoria econòmica a Barcelona";
@@ -42,6 +43,13 @@ export default async function OGImage({
           fontFamily: "sans-serif",
         }}
       >
+        {/* Logo */}
+        <img
+          src={logoBase64}
+          width={140}
+          height={60}
+          style={{ marginBottom: 32, objectFit: "contain" }}
+        />
         <div
           style={{
             width: 80,
