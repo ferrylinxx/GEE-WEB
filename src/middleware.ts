@@ -9,6 +9,6 @@ export const config = {
     // - /api (API routes)
     // - /_next (Next.js internals)
     // - /images, /logo.png, etc. (static files)
-    "/((?!api|_next|images|.*\\..*|manifest\\.json|favicon\\.ico).*)",
+    "/((?!api|_next|images|sitemap\\.xml|robots\\.txt|.*\\..*|manifest\\.json|favicon\\.ico).*)",
   ],
 };
