@@ -136,43 +136,6 @@ export default function GoogleAnalytics() {
 
   return (
     <>
-      {/*
-        Google Consent Mode v2 — Default consent state
-        MUST load BEFORE gtag.js to comply with Google's EU User Consent Policy.
-        Default: denied for all storage types in EEA regions.
-        The CookieConsent component will call gtag('consent', 'update', ...) when user decides.
-      */}
-      <Script id="google-consent-default" strategy="beforeInteractive">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-
-          gtag('consent', 'default', {
-            'ad_storage': 'denied',
-            'ad_user_data': 'denied',
-            'ad_personalization': 'denied',
-            'analytics_storage': 'denied',
-            'wait_for_update': 500
-          });
-
-          // Restore consent from localStorage if user already chose
-          (function() {
-            try {
-              var consent = localStorage.getItem('gee-cookie-consent');
-              if (consent === 'accepted') {
-                gtag('consent', 'update', {
-                  'ad_storage': 'denied',
-                  'ad_user_data': 'denied',
-                  'ad_personalization': 'denied',
-                  'analytics_storage': 'granted'
-                });
-              }
-            } catch(e) {}
-          })();
-        `}
-      </Script>
-
-      {/* Google Analytics gtag.js — loads after consent defaults are set */}
       <Script
         src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
         strategy="afterInteractive"

@@ -1,25 +1,25 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "Política de Privadesa - Gabinet Estudis Econòmics";
+export const alt = "Clients - Gabinet Estudis Econòmics";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 const texts: Record<string, { section: string; title: string; desc: string }> = {
   ca: {
-    section: "Legal",
-    title: "Política de Privadesa",
-    desc: "Informació sobre el tractament de dades personals i els vostres drets",
+    section: "Confiança",
+    title: "Clients",
+    desc: "Institucions públiques, ajuntaments, empreses privades i organismes que confien en la nostra experiència",
   },
   es: {
-    section: "Legal",
-    title: "Política de Privacidad",
-    desc: "Información sobre el tratamiento de datos personales y sus derechos",
+    section: "Confianza",
+    title: "Clientes",
+    desc: "Instituciones públicas, ayuntamientos, empresas privadas y organismos que confían en nuestra experiencia",
   },
   en: {
-    section: "Legal",
-    title: "Privacy Policy",
-    desc: "Information about personal data processing and your rights",
+    section: "Trust",
+    title: "Clients",
+    desc: "Public institutions, councils, private companies and organisations that trust our experience",
   },
 };
 
@@ -52,7 +52,7 @@ export default async function OGImage({
             {t.section}
           </span>
         </div>
-        <h1 style={{ color: "#ffffff", fontSize: "56px", fontWeight: 700, lineHeight: 1.1, margin: 0 }}>
+        <h1 style={{ color: "#ffffff", fontSize: "64px", fontWeight: 700, lineHeight: 1.1, margin: 0 }}>
           {t.title}
         </h1>
         <div style={{ marginTop: "24px", width: "80px", height: "4px", background: "linear-gradient(90deg, #c8a96e, #d4b87a)", borderRadius: "2px" }} />
