@@ -6,7 +6,7 @@ import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 
 const slideData = [
-  { image: "/images/image1.png", ctaHref: "/que-fem" as const },
+  { image: "/images/banner1-plano.jpeg", ctaHref: "/que-fem" as const },
   { image: "/images/banner2-lleida.jpeg", ctaHref: "/presentacio" as const },
   { image: "/images/banner3-eolics.jpeg", ctaHref: "/qui-som" as const },
 ];
@@ -17,16 +17,25 @@ export default function Hero() {
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
   const [progress, setProgress] = useState(0);
+  const [hasLoaded, setHasLoaded] = useState(false);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const progressRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const progressOnPause = useRef(0);
   const SLIDE_DURATION = 7000;
   const PROGRESS_INTERVAL = 30;
+
+  // Title reveal animation on first load
+  useEffect(() => {
+    const timer = setTimeout(() => setHasLoaded(true), 100);
+    return () => clearTimeout(timer);
+  }, []);
 
   const goToSlide = useCallback(
     (index: number) => {
       if (isTransitioning || index === current) return;
       setIsTransitioning(true);
       setProgress(0);
+      progressOnPause.current = 0;
       setTimeout(() => {
         setCurrent(index);
         setTimeout(() => setIsTransitioning(false), 100);
@@ -43,23 +52,40 @@ export default function Hero() {
     goToSlide((current - 1 + slideData.length) % slideData.length);
   }, [current, goToSlide]);
 
+  // Auto-play timer
   useEffect(() => {
     if (isPaused) return;
-    timerRef.current = setInterval(nextSlide, SLIDE_DURATION);
-    return () => { if (timerRef.current) clearInterval(timerRef.current); };
-  }, [nextSlide, isPaused]);
+    const remaining = SLIDE_DURATION * (1 - progressOnPause.current / 100);
+    timerRef.current = setTimeout(() => {
+      nextSlide();
+    }, remaining);
+    return () => {
+      if (timerRef.current) clearTimeout(timerRef.current as ReturnType<typeof setTimeout>);
+    };
+  }, [nextSlide, isPaused, current]);
 
+  // Progress bar — synced with pause/resume
   useEffect(() => {
-    if (isPaused) return;
-    setProgress(0);
+    if (isPaused) {
+      progressOnPause.current = progress;
+      return;
+    }
     progressRef.current = setInterval(() => {
       setProgress((prev) => {
         const next = prev + (PROGRESS_INTERVAL / SLIDE_DURATION) * 100;
         return next >= 100 ? 100 : next;
       });
     }, PROGRESS_INTERVAL);
-    return () => { if (progressRef.current) clearInterval(progressRef.current); };
+    return () => {
+      if (progressRef.current) clearInterval(progressRef.current);
+    };
   }, [current, isPaused]);
+
+  // Reset progress on slide change
+  useEffect(() => {
+    setProgress(0);
+    progressOnPause.current = 0;
+  }, [current]);
 
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
@@ -98,40 +124,56 @@ export default function Hero() {
       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20 z-[1]" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 w-full">
-        <div className="max-w-3xl">
-          <div className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-8 transition-all duration-700 ${isTransitioning ? "opacity-0 -translate-y-4" : "opacity-100 translate-y-0"}`}>
-            <span className="w-2 h-2 rounded-full bg-[var(--color-accent)] animate-pulse" />
-            <span className="text-sm font-medium text-white/90 tracking-wide">{t("since")}</span>
+        <div className="max-w-3xl flex">
+          {/* Línea vertical dorada decorativa */}
+          <div className="hidden md:flex flex-col items-center mr-8 pt-2">
+            <div className={`w-px bg-gradient-to-b from-[var(--color-accent)] via-[var(--color-accent)]/60 to-transparent transition-all duration-1000 ${hasLoaded ? "h-72 opacity-100" : "h-0 opacity-0"}`} />
+            <div className={`w-2 h-2 rounded-full bg-[var(--color-accent)] mt-2 transition-all duration-700 delay-500 ${hasLoaded ? "opacity-100 scale-100" : "opacity-0 scale-0"}`} />
           </div>
 
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 tracking-tight leading-[0.9]">
-            <span className="block">{t("title1")}</span>
-            <span className="block text-[var(--color-accent)] drop-shadow-[0_2px_10px_rgba(200,169,110,0.3)]">{t("title2")}</span>
-            <span className="block">{t("title3")}</span>
-          </h1>
+          <div className="flex-1">
+            {/* Badge "Desde 1989" — ahora anima con cada slide */}
+            <div className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-8 transition-all duration-700 ${isTransitioning ? "opacity-0 -translate-y-4 scale-95" : "opacity-100 translate-y-0 scale-100"}`}>
+              <span className="w-2 h-2 rounded-full bg-[var(--color-accent)] animate-pulse" />
+              <span className="text-sm font-medium text-white/90 tracking-wide">{t("since")}</span>
+            </div>
 
-          <div className={`transition-all duration-700 delay-100 ${isTransitioning ? "opacity-0 translate-x-6" : "opacity-100 translate-x-0"}`}>
-            <span className="inline-block text-xs font-bold uppercase tracking-[0.3em] text-[var(--color-accent)] bg-[var(--color-accent)]/10 px-4 py-1.5 rounded-sm border-l-2 border-[var(--color-accent)]">
-              {t(`slides.${current}.subtitle`)}
-            </span>
-          </div>
+            {/* Título con animación reveal línea por línea */}
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 tracking-tight leading-[0.9]">
+              <span className={`block transition-all duration-700 ${hasLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+                {t("title1")}
+              </span>
+              <span className={`block text-[var(--color-accent)] drop-shadow-[0_2px_10px_rgba(200,169,110,0.3)] transition-all duration-700 delay-200 ${hasLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+                {t("title2")}
+              </span>
+              <span className={`block transition-all duration-700 delay-[400ms] ${hasLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+                {t("title3")}
+              </span>
+            </h1>
 
-          <div className="mt-5 min-h-[100px]">
-            <p className={`text-lg md:text-xl text-white/85 leading-relaxed max-w-2xl transition-all duration-700 delay-200 ${isTransitioning ? "opacity-0 translate-y-6" : "opacity-100 translate-y-0"}`}>
-              {t(`slides.${current}.text`)}
-            </p>
-          </div>
+            <div className={`transition-all duration-700 delay-100 ${isTransitioning ? "opacity-0 translate-x-6" : "opacity-100 translate-x-0"}`}>
+              <span className="inline-block text-xs font-bold uppercase tracking-[0.3em] text-[var(--color-accent)] bg-[var(--color-accent)]/10 px-4 py-1.5 rounded-sm border-l-2 border-[var(--color-accent)]">
+                {t(`slides.${current}.subtitle`)}
+              </span>
+            </div>
 
-          <div className={`mt-8 flex flex-wrap gap-4 transition-all duration-700 delay-300 ${isTransitioning ? "opacity-0 translate-y-6" : "opacity-100 translate-y-0"}`}>
-            <Link href={slideData[current].ctaHref} className="group inline-flex items-center gap-2 px-8 py-3.5 bg-[var(--color-accent)] text-white font-semibold rounded-md hover:bg-[var(--color-accent-light)] hover:shadow-lg hover:shadow-[var(--color-accent)]/25 transition-all duration-300">
-              {t(`slides.${current}.cta`)}
-              <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-              </svg>
-            </Link>
-            <Link href="/contacte" className="inline-flex items-center px-8 py-3.5 border-2 border-white/40 text-white font-semibold rounded-md hover:bg-white/10 hover:border-white/60 transition-all duration-300 backdrop-blur-sm">
-              {t("contact")}
-            </Link>
+            <div className="mt-5 min-h-[100px]">
+              <p className={`text-lg md:text-xl text-white/85 leading-relaxed max-w-2xl transition-all duration-700 delay-200 ${isTransitioning ? "opacity-0 translate-y-6" : "opacity-100 translate-y-0"}`}>
+                {t(`slides.${current}.text`)}
+              </p>
+            </div>
+
+            <div className={`mt-8 flex flex-wrap gap-4 transition-all duration-700 delay-300 ${isTransitioning ? "opacity-0 translate-y-6" : "opacity-100 translate-y-0"}`}>
+              <Link href={slideData[current].ctaHref} className="group inline-flex items-center gap-2 px-8 py-3.5 bg-[var(--color-accent)] text-white font-semibold rounded-md hover:bg-[var(--color-accent-light)] hover:shadow-lg hover:shadow-[var(--color-accent)]/25 transition-all duration-300">
+                {t(`slides.${current}.cta`)}
+                <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                </svg>
+              </Link>
+              <Link href="/contacte" className="inline-flex items-center px-8 py-3.5 border-2 border-white/40 text-white font-semibold rounded-md hover:bg-white/10 hover:border-white/60 transition-all duration-300 backdrop-blur-sm">
+                {t("contact")}
+              </Link>
+            </div>
           </div>
         </div>
       </div>
@@ -155,6 +197,12 @@ export default function Hero() {
               </button>
             ))}
           </div>
+          {/* Indicador pausa */}
+          {isPaused && (
+            <div className="flex items-center gap-1.5 text-white/40 text-xs uppercase tracking-widest mr-4">
+              <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z" /></svg>
+            </div>
+          )}
           <div className="hidden sm:flex items-center gap-3 text-white/50 text-sm font-mono">
             <span className="text-2xl font-bold text-white tabular-nums">{String(current + 1).padStart(2, "0")}</span>
             <span className="w-8 h-px bg-white/30" />
