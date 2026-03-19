@@ -16,7 +16,7 @@ export default async function OGImage() {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          background: "#ffffff",
+          background: "transparent",
         }}
       >
         <img

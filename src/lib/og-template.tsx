@@ -9,7 +9,7 @@ export function OGSubpageLayout() {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        background: "#ffffff",
+        background: "transparent",
       }}
     >
       <img
