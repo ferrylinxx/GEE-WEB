@@ -312,7 +312,6 @@ export default async function LocaleLayout({ children, params }: Props) {
   return (
     <html lang={locale} className="scroll-smooth">
       <head>
-        <GoogleAnalytics />
         {routing.locales.map((l) => (
           <link
             key={l}
@@ -351,11 +350,13 @@ export default async function LocaleLayout({ children, params }: Props) {
           <ScrollToTop />
           <CookieConsent />
         </NextIntlClientProvider>
+        <GoogleAnalytics />
         <Analytics />
         <Script
+          async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6269718356198501"
           crossOrigin="anonymous"
-          strategy="lazyOnload"
+          strategy="afterInteractive"
         />
       </body>
     </html>
