@@ -4,6 +4,9 @@ const siteUrl = "https://geeconomics.com";
 const defaultLocale = "ca";
 const locales = ["ca", "es", "en"] as const;
 
+// Se actualiza automáticamente con cada build/deploy
+const buildDate = new Date();
+
 type PageConfig = {
   path: string;
   changeFrequency:
@@ -15,7 +18,6 @@ type PageConfig = {
     | "yearly"
     | "never";
   priority: number;
-  lastModified: string;
   images?: string[];
 };
 
@@ -24,7 +26,6 @@ const pages: PageConfig[] = [
     path: "",
     changeFrequency: "weekly",
     priority: 1.0,
-    lastModified: "2026-03-18",
     images: [
       `${siteUrl}/images/image1.png`,
       `${siteUrl}/images/banner2-lleida.jpeg`,
@@ -35,44 +36,37 @@ const pages: PageConfig[] = [
     path: "/presentacio",
     changeFrequency: "monthly",
     priority: 0.9,
-    lastModified: "2026-03-18",
     images: [`${siteUrl}/logo.png`],
   },
   {
     path: "/que-fem",
     changeFrequency: "monthly",
     priority: 0.9,
-    lastModified: "2026-03-18",
   },
   {
     path: "/qui-som",
     changeFrequency: "monthly",
     priority: 0.8,
-    lastModified: "2026-03-18",
   },
   {
     path: "/clients",
     changeFrequency: "monthly",
     priority: 0.7,
-    lastModified: "2026-03-18",
   },
   {
     path: "/contacte",
     changeFrequency: "monthly",
     priority: 0.8,
-    lastModified: "2026-03-18",
   },
   {
     path: "/politica-privacitat",
     changeFrequency: "yearly",
     priority: 0.2,
-    lastModified: "2026-03-01",
   },
   {
     path: "/politica-cookies",
     changeFrequency: "yearly",
     priority: 0.2,
-    lastModified: "2026-03-01",
   },
 ];
 
@@ -94,7 +88,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     for (const locale of locales) {
       entries.push({
         url: buildUrl(locale, page.path),
-        lastModified: new Date(page.lastModified),
+        lastModified: buildDate,
         changeFrequency: page.changeFrequency,
         priority: page.priority,
         alternates: { languages },
