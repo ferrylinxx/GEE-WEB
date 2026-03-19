@@ -10,6 +10,7 @@ export default function Navbar() {
   const t = useTranslations("nav");
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [menuClosing, setMenuClosing] = useState(false);
   const pathname = usePathname();
   const isHome = pathname === "/";
 
@@ -77,8 +78,19 @@ export default function Navbar() {
     return () => { document.body.style.overflow = ""; };
   }, [menuOpen]);
 
+  // Close menu with stagger-out animation
+  const handleCloseMenu = useCallback(() => {
+    setMenuClosing(true);
+    setTimeout(() => {
+      setMenuOpen(false);
+      setMenuClosing(false);
+    }, 500);
+  }, []);
+
   const textColor =
     isHome && !scrolled ? "text-white" : "text-[var(--color-primary)]";
+
+  const menuVisible = menuOpen && !menuClosing;
 
   return (
     <header role="banner">
@@ -86,22 +98,22 @@ export default function Navbar() {
         aria-label={t("menu")}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled || !isHome
-            ? "bg-white/95 backdrop-blur-sm shadow-md"
+            ? "bg-white/80 backdrop-blur-xl shadow-[0_1px_0_rgba(200,169,110,0.15)] border-b border-[var(--color-accent)]/10"
             : "bg-transparent"
         }`}
       >
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="flex h-20 items-center justify-between">
-            {/* Logo with image */}
+            {/* Logo with image + hover animation */}
             <Link href="/" className="flex items-center gap-2.5 group">
               <Image
                 src="/logo.png"
                 alt="GEE Logo"
                 width={38}
                 height={38}
-                className={`rounded-sm transition-opacity ${
+                className={`rounded-sm transition-all duration-300 ${
                   isHome && !scrolled ? "brightness-0 invert opacity-90" : "opacity-80"
-                } group-hover:opacity-100`}
+                } group-hover:opacity-100 group-hover:scale-110 group-hover:rotate-3`}
               />
               <div className="flex flex-col leading-tight">
                 <span
@@ -164,7 +176,13 @@ export default function Navbar() {
             {/* Mobile menu button */}
             <button
               className="md:hidden relative z-[60] p-2"
-              onClick={() => setMenuOpen(!menuOpen)}
+              onClick={() => {
+                if (menuOpen) {
+                  handleCloseMenu();
+                } else {
+                  setMenuOpen(true);
+                }
+              }}
               aria-label={t("menu")}
             >
               <div className="space-y-1.5">
@@ -214,7 +232,7 @@ export default function Navbar() {
 
         {/* Close button */}
         <button
-          onClick={() => setMenuOpen(false)}
+          onClick={handleCloseMenu}
           className="absolute top-6 right-6 z-10 p-2 text-white/60 hover:text-white transition-colors"
           aria-label="Tancar menú"
         >
@@ -229,6 +247,33 @@ export default function Navbar() {
 
         {/* Content */}
         <div className="relative h-full flex flex-col justify-center px-10">
+          {/* Logo in mobile menu */}
+          <div
+            className={`absolute top-7 left-10 flex items-center gap-2.5 transition-all duration-500 ${
+              menuVisible
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 -translate-y-4"
+            }`}
+            style={{ transitionDelay: menuVisible ? "100ms" : "0ms" }}
+          >
+            <Image
+              src="/logo.png"
+              alt="GEE Logo"
+              width={32}
+              height={32}
+              className="rounded-sm brightness-0 invert opacity-80"
+            />
+            <div className="flex flex-col leading-tight">
+              <span className="text-base font-bold tracking-widest text-white">
+                GABINET
+              </span>
+              <span className="text-[9px] tracking-[0.3em] text-[var(--color-accent-light)]">
+                ESTUDIS ECONÒMICS
+              </span>
+            </div>
+          </div>
+
+          {/* Navigation links */}
           <div className="space-y-2">
             {navLinks.map((link, index) => {
               const isActive =
@@ -240,19 +285,23 @@ export default function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  onClick={() => setMenuOpen(false)}
+                  onClick={handleCloseMenu}
                   className={`block transition-all duration-500 ${
-                    menuOpen
+                    menuVisible
                       ? "opacity-100 translate-x-0"
-                      : "opacity-0 -translate-x-8"
+                      : menuClosing
+                        ? "opacity-0 translate-x-8"
+                        : "opacity-0 -translate-x-8"
                   }`}
                   style={{
-                    transitionDelay: menuOpen ? `${150 + index * 60}ms` : "0ms",
+                    transitionDelay: menuVisible
+                      ? `${150 + index * 60}ms`
+                      : menuClosing
+                        ? `${(navLinks.length - 1 - index) * 50}ms`
+                        : "0ms",
                   }}
                 >
-                  <div className={`group flex items-center gap-4 py-3 border-b border-white/10 ${
-                    isActive ? "" : ""
-                  }`}>
+                  <div className="group flex items-center gap-4 py-3 border-b border-white/10">
                     <span className={`text-xs font-mono ${
                       isActive ? "text-[var(--color-accent)]" : "text-white/30"
                     }`}>
@@ -274,26 +323,43 @@ export default function Navbar() {
             })}
           </div>
 
+          {/* Golden separator */}
+          <div
+            className={`mt-10 transition-all duration-500 ${
+              menuVisible ? "opacity-100 scale-x-100" : "opacity-0 scale-x-0"
+            }`}
+            style={{
+              transitionDelay: menuVisible ? "520ms" : "0ms",
+              transformOrigin: "left",
+            }}
+          >
+            <div className="h-px bg-gradient-to-r from-[var(--color-accent)] via-[var(--color-accent)]/40 to-transparent" />
+          </div>
+
           {/* Language switcher at bottom */}
           <div
-            className={`mt-12 transition-all duration-500 ${
-              menuOpen
+            className={`mt-6 transition-all duration-500 ${
+              menuVisible
                 ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-4"
+                : menuClosing
+                  ? "opacity-0 -translate-y-4"
+                  : "opacity-0 translate-y-4"
             }`}
-            style={{ transitionDelay: menuOpen ? "550ms" : "0ms" }}
+            style={{ transitionDelay: menuVisible ? "550ms" : "0ms" }}
           >
             <LanguageSwitcher textColor="light" />
           </div>
 
           {/* Contact info */}
           <div
-            className={`mt-8 space-y-2 transition-all duration-500 ${
-              menuOpen
+            className={`mt-6 space-y-2 transition-all duration-500 ${
+              menuVisible
                 ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-4"
+                : menuClosing
+                  ? "opacity-0 -translate-y-4"
+                  : "opacity-0 translate-y-4"
             }`}
-            style={{ transitionDelay: menuOpen ? "620ms" : "0ms" }}
+            style={{ transitionDelay: menuVisible ? "620ms" : "0ms" }}
           >
             <a href="tel:+34932119744" className="block text-sm text-white/40 hover:text-[var(--color-accent)] transition-colors">
               +34 932 119 744
