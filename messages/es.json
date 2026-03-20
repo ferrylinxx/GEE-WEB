@@ -186,7 +186,12 @@
     "subdescription": "Puedes volver a la página principal o explorar nuestras secciones a través del menú de navegación.",
     "backHome": "Volver al inicio",
     "contactUs": "Contactarnos",
-    "sections": "Secciones principales"
+    "sections": "Secciones principales",
+    "searchPlaceholder": "Buscar página...",
+    "noResults": "Sin resultados",
+    "redirecting": "Redirigiendo al inicio en {seconds}s...",
+    "pauseRedirect": "Pausar",
+    "resumeRedirect": "Reanudar"
   },
   "cookies": {
     "title": "Protección de datos y cookies",

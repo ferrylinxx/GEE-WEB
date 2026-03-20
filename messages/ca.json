@@ -186,7 +186,12 @@
     "subdescription": "Podeu tornar a la pàgina principal o explorar les nostres seccions a través del menú de navegació.",
     "backHome": "Tornar a l'inici",
     "contactUs": "Contactar-nos",
-    "sections": "Seccions principals"
+    "sections": "Seccions principals",
+    "searchPlaceholder": "Cercar pàgina...",
+    "noResults": "Cap resultat trobat",
+    "redirecting": "Redirigint a l'inici en {seconds}s...",
+    "pauseRedirect": "Pausar",
+    "resumeRedirect": "Reprendre"
   },
   "cookies": {
     "title": "Protecció de dades i galetes",

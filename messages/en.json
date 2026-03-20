@@ -186,7 +186,12 @@
     "subdescription": "You can return to the home page or explore our sections through the navigation menu.",
     "backHome": "Back to home",
     "contactUs": "Contact us",
-    "sections": "Main sections"
+    "sections": "Main sections",
+    "searchPlaceholder": "Search page...",
+    "noResults": "No results found",
+    "redirecting": "Redirecting to home in {seconds}s...",
+    "pauseRedirect": "Pause",
+    "resumeRedirect": "Resume"
   },
   "cookies": {
     "title": "Data protection & cookies",
