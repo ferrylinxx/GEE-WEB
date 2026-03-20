@@ -92,7 +92,7 @@ export default async function PoliticaPrivacitatPage({ params }: Props) {
               Política de Privacitat
             </h1>
             <p className="text-white/50 text-sm">
-              Última actualització: 16 de març de 2026
+              Última actualització: 20 de març de 2026
             </p>
           </div>
         </div>
@@ -126,11 +126,12 @@ export default async function PoliticaPrivacitatPage({ params }: Props) {
               A Gabinet Estudis Econòmics (GLLG) tractem les dades personals amb les següents finalitats:
             </p>
             <div className="space-y-3">
-              <BulletItem title="Formulari de contacte" desc="Gestionar les sol·licituds d'informació o contacte rebudes a través del formulari web." />
-              <BulletItem title="Serveis professionals" desc="Prestar els serveis professionals de consultoria econòmica sol·licitats." />
-              <BulletItem title="Comunicacions" desc="Enviar comunicacions comercials sobre els nostres serveis, únicament amb consentiment explícit." />
-              <BulletItem title="Obligacions legals" desc="Complir amb les obligacions legals i fiscals aplicables." />
-              <BulletItem title="Analítica web" desc="Analitzar la navegació al lloc web mitjançant Google Analytics per millorar els nostres serveis." />
+              <BulletItem title="Formulari de contacte" desc="Gestionar les sol·licituds d'informació o contacte rebudes a través del formulari web. Les dades proporcionades s'utilitzen exclusivament per respondre la consulta." />
+              <BulletItem title="Serveis professionals" desc="Prestar els serveis professionals de consultoria econòmica sol·licitats, incloent l'elaboració d'estudis, informes i assessorament." />
+              <BulletItem title="Comunicacions" desc="Enviar comunicacions comercials sobre els nostres serveis, únicament amb consentiment explícit previ de l'usuari. Pot revocar-se en qualsevol moment." />
+              <BulletItem title="Obligacions legals" desc="Complir amb les obligacions legals, fiscals i mercantils aplicables segons la normativa vigent." />
+              <BulletItem title="Analítica web" desc="Analitzar la navegació al lloc web mitjançant Google Analytics 4 (GA4) de forma anònima i agregada per millorar l'experiència d'usuari i els nostres serveis." />
+              <BulletItem title="Seguretat" desc="Protegir el lloc web contra spam i abusos mitjançant Google reCAPTCHA v3, que analitza el comportament de navegació per distingir humans de bots." />
             </div>
           </SectionBlock>
 
@@ -157,7 +158,7 @@ export default async function PoliticaPrivacitatPage({ params }: Props) {
           {/* 04 - Dades */}
           <SectionBlock id="pp-dades" num="04" title="Dades que recollim">
             <p className="text-[var(--color-text-muted)] text-sm leading-relaxed mb-4">
-              A través del formulari de contacte recollim:
+              A través del formulari de contacte recollim les següents dades personals:
             </p>
             <div className="flex flex-wrap gap-2 mb-5">
               {["Nom i cognoms", "Correu electrònic", "Telèfon", "Empresa", "Missatge"].map((item) => (
@@ -166,13 +167,26 @@ export default async function PoliticaPrivacitatPage({ params }: Props) {
                 </span>
               ))}
             </div>
+            <div className="space-y-3 mb-5">
+              <div className="bg-white/60 rounded-xl p-4 border border-[var(--color-primary)]/5">
+                <span className="text-sm font-semibold text-[var(--color-primary)]">Dades de navegació (anònimes)</span>
+                <p className="text-xs text-[var(--color-text-muted)] mt-1 leading-relaxed">
+                  Mitjançant Google Analytics 4, es recullen dades anònimes com: pàgines visitades, temps de permanència, profunditat de scroll, dispositiu i navegador, ubicació aproximada (país/ciutat) i origen del trànsit. Aquestes dades <strong>no permeten identificar</strong> l&apos;usuari individualment.
+                </p>
+              </div>
+              <div className="bg-white/60 rounded-xl p-4 border border-[var(--color-primary)]/5">
+                <span className="text-sm font-semibold text-[var(--color-primary)]">Dades de seguretat</span>
+                <p className="text-xs text-[var(--color-text-muted)] mt-1 leading-relaxed">
+                  Google reCAPTCHA v3 recopila dades de comportament de navegació (moviments del ratolí, interaccions) per avaluar el risc de spam. Aquestes dades es processen per Google i no s&apos;emmagatzemen al nostre servidor.
+                </p>
+              </div>
+            </div>
             <div className="bg-[var(--color-accent)]/5 border border-[var(--color-accent)]/15 rounded-xl p-4">
               <p className="text-sm text-[var(--color-text-muted)] leading-relaxed">
-                Mitjançant Google Analytics, es recullen dades anònimes de navegació. Consulteu la nostra{" "}
+                Per a informació detallada sobre les galetes i tecnologies de seguiment, consulteu la nostra{" "}
                 <Link href="/politica-cookies" className="text-[var(--color-accent)] font-medium hover:underline">
-                  Política de Cookies
-                </Link>{" "}
-                per a més informació.
+                  Política de Cookies →
+                </Link>
               </p>
             </div>
           </SectionBlock>
@@ -202,14 +216,21 @@ export default async function PoliticaPrivacitatPage({ params }: Props) {
           </SectionBlock>
 
           {/* 06 - Destinataris */}
-          <SectionBlock id="pp-destinataris" num="06" title="Destinataris de les dades">
+          <SectionBlock id="pp-destinataris" num="06" title="Destinataris i transferències internacionals">
             <p className="text-sm text-[var(--color-text-muted)] leading-relaxed mb-4">
-              Les dades personals no se cediran a tercers, excepte:
+              Les dades personals no se cediran a tercers, excepte en els següents casos:
             </p>
-            <div className="space-y-3">
-              <BulletItem title="Obligació legal" desc="Quan existeixi una obligació legal (Agència Tributària, jutjats, etc.)." />
-              <BulletItem title="Google LLC" desc="Google Analytics: processament de dades anònimes de navegació. Les dades es poden transferir als EUA sota les clàusules contractuals tipus." />
-              <BulletItem title="IONOS" desc="Proveïdor de correu electrònic: els missatges del formulari es transmeten via SMTP a través dels servidors d'IONOS." />
+            <div className="space-y-3 mb-5">
+              <BulletItem title="Obligació legal" desc="Quan existeixi una obligació legal (Agència Tributària, jutjats, forces de seguretat, etc.)." />
+              <BulletItem title="Google LLC (EUA)" desc="Google Analytics 4: processament de dades anònimes de navegació. Google reCAPTCHA v3: anàlisi de risc anti-spam. Les dades es poden transferir als servidors de Google als EUA." />
+            </div>
+            <div className="bg-[var(--color-accent)]/5 border border-[var(--color-accent)]/15 rounded-xl p-4">
+              <p className="text-sm text-[var(--color-text-muted)] leading-relaxed">
+                <strong className="text-[var(--color-primary)]">Transferències internacionals:</strong> les transferències de dades a Google LLC (EUA) estan emparades per les <strong>Clàusules Contractuals Tipus (CCT)</strong> aprovades per la Comissió Europea i el <strong>EU-US Data Privacy Framework</strong>. Consulteu la{" "}
+                <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-[var(--color-accent)] font-medium hover:underline">
+                  política de privacitat de Google →
+                </a>
+              </p>
             </div>
           </SectionBlock>
 
@@ -277,7 +298,7 @@ export default async function PoliticaPrivacitatPage({ params }: Props) {
           <SectionBlock id="pp-cookies" num="09" title="Galetes (Cookies)">
             <div className="bg-[var(--color-accent)]/5 border border-[var(--color-accent)]/15 rounded-xl p-5">
               <p className="text-sm text-[var(--color-text-muted)] leading-relaxed">
-                Aquest lloc web utilitza galetes pròpies i de tercers. Per a informació detallada, consulteu la nostra{" "}
+                Aquest lloc web utilitza galetes pròpies i de tercers per a finalitats tècniques i analítiques. Per a informació detallada sobre cada galeta, la seva finalitat i durada, consulteu la nostra{" "}
                 <Link href="/politica-cookies" className="text-[var(--color-accent)] font-semibold hover:underline">
                   Política de Cookies →
                 </Link>
@@ -285,10 +306,21 @@ export default async function PoliticaPrivacitatPage({ params }: Props) {
             </div>
           </SectionBlock>
 
-          {/* 10 - Modificacions */}
-          <SectionBlock id="pp-modificacions" num="10" title="Modificacions de la política">
+          {/* 10 - Menors */}
+          <SectionBlock id="pp-menors" num="10" title="Privacitat dels menors">
             <p className="text-sm text-[var(--color-text-muted)] leading-relaxed">
-              GLLG es reserva el dret de modificar aquesta política de privacitat per adaptar-la a novetats legislatives o jurisprudencials. En cas de canvis significatius, s&apos;informarà els usuaris a través del lloc web.
+              Els nostres serveis estan dirigits a professionals i empreses. No recollim conscientment dades personals de menors de 14 anys. Si teniu coneixement que un menor ens ha proporcionat dades personals sense el consentiment dels seus pares o tutors legals, contacteu-nos a{" "}
+              <a href="mailto:gllg@geeconomics.com" className="text-[var(--color-accent)] font-medium hover:underline">
+                gllg@geeconomics.com
+              </a>{" "}
+              i procedirem a eliminar-les immediatament.
+            </p>
+          </SectionBlock>
+
+          {/* 11 - Modificacions */}
+          <SectionBlock id="pp-modificacions" num="11" title="Modificacions de la política">
+            <p className="text-sm text-[var(--color-text-muted)] leading-relaxed">
+              GLLG es reserva el dret de modificar aquesta política de privacitat per adaptar-la a novetats legislatives, jurisprudencials o tècniques. En cas de canvis significatius, s&apos;informarà els usuaris a través del lloc web. Es recomana revisar periòdicament aquesta pàgina per estar al corrent de qualsevol actualització.
             </p>
           </SectionBlock>
 

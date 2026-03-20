@@ -21,10 +21,10 @@ export default function Footer() {
       {/* Top accent line */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--color-accent)]/50 to-transparent" />
 
-      <div className="mx-auto max-w-7xl px-6 lg:px-8 pt-16 pb-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8 pt-14 md:pt-16 pb-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8">
           <ScrollReveal variant="fade-up">
-            <div className="space-y-5">
+            <div className="space-y-5 text-center md:text-left">
               <Link href="/" className="inline-flex items-center gap-3 group">
                 <Image
                   src="/logo.png"
@@ -42,19 +42,19 @@ export default function Footer() {
                   </span>
                 </div>
               </Link>
-              <p className="text-sm text-white/50 leading-relaxed max-w-xs">
+              <p className="text-sm text-white/50 leading-relaxed max-w-xs mx-auto md:mx-0">
                 {t("description")}
               </p>
             </div>
           </ScrollReveal>
 
           <ScrollReveal variant="fade-up" delay={100}>
-            <div>
+            <div className="text-center md:text-left">
               <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--color-accent)] mb-5">
                 {t("navigation")}
               </h3>
               <nav aria-label="Footer navigation">
-                <ul className="grid grid-cols-2 gap-x-6 gap-y-3">
+                <ul className="grid grid-cols-2 gap-x-6 gap-y-3 max-w-xs mx-auto md:mx-0">
                   {navLinks.map((link) => (
                     <li key={link.href}>
                       <Link
@@ -71,11 +71,11 @@ export default function Footer() {
           </ScrollReveal>
 
           <ScrollReveal variant="fade-up" delay={200}>
-            <div>
+            <div className="text-center md:text-left">
               <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--color-accent)] mb-5">
                 {t("contact")}
               </h3>
-              <ul className="space-y-3 text-sm text-white/50">
+              <ul className="space-y-3 text-sm text-white/50 inline-flex flex-col items-start mx-auto md:mx-0">
                 <li>
                   <a
                     href="https://maps.app.goo.gl/vHFxerbdsYH5BtEo8"
@@ -87,7 +87,7 @@ export default function Footer() {
                       <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
                       <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
                     </svg>
-                    <span className="leading-relaxed">
+                    <span className="leading-relaxed text-left">
                       {t("address")}
                       <br />
                       {t("addressCity")}
@@ -121,12 +121,12 @@ export default function Footer() {
           <p className="text-xs text-white/30">
             {t("copyright", { year: new Date().getFullYear() })}
           </p>
-          <div className="flex gap-4">
-            <Link href="/politica-privacitat" className="text-xs text-white/30 hover:text-white/50 transition-colors duration-200">
+          <div className="flex items-center gap-4">
+            <Link href="/politica-privacitat" className="text-xs text-white/30 hover:text-[var(--color-accent)] transition-colors duration-200">
               {t("privacy")}
             </Link>
-            <span className="text-white/20">|</span>
-            <Link href="/politica-cookies" className="text-xs text-white/30 hover:text-white/50 transition-colors duration-200">
+            <span className="text-[var(--color-accent)]/40 text-xs leading-none">|</span>
+            <Link href="/politica-cookies" className="text-xs text-white/30 hover:text-[var(--color-accent)] transition-colors duration-200">
               {t("cookies")}
             </Link>
           </div>
