@@ -44,16 +44,16 @@ const browsers = [
   { name: "Microsoft Edge", path: "Configuració → Privadesa, cerca i serveis → Galetes" },
 ];
 
-function SectionBlock({ num, title, children }: { num: string; title: string; children: React.ReactNode }) {
+function SectionBlock({ id, num, title, children }: { id: string; num: string; title: string; children: React.ReactNode }) {
   return (
-    <section>
-      <div className="flex items-center gap-4 mb-5">
-        <span className="text-xs font-mono text-[var(--color-accent)]/60 bg-[var(--color-accent)]/8 w-9 h-9 rounded-xl flex items-center justify-center font-semibold">
+    <section id={id} className="scroll-mt-28">
+      <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-5">
+        <span className="text-xs font-mono text-[var(--color-accent)]/60 bg-[var(--color-accent)]/8 w-8 h-8 sm:w-9 sm:h-9 rounded-lg sm:rounded-xl flex items-center justify-center font-semibold shrink-0">
           {num}
         </span>
-        <h2 className="text-xl font-semibold text-[var(--color-primary)]">{title}</h2>
+        <h2 className="text-lg sm:text-xl font-semibold text-[var(--color-primary)]">{title}</h2>
       </div>
-      <div className="pl-[52px]">{children}</div>
+      <div className="pl-0 sm:pl-[48px]">{children}</div>
     </section>
   );
 }
@@ -94,14 +94,14 @@ export default async function PoliticaCookiesPage({ params }: Props) {
         <div className="mx-auto max-w-3xl px-6 lg:px-8 space-y-10">
 
           {/* 01 */}
-          <SectionBlock num="01" title="Què són les galetes (cookies)?">
+          <SectionBlock id="pc-que-son" num="01" title="Què són les galetes (cookies)?">
             <p className="text-sm text-[var(--color-text-muted)] leading-relaxed">
               Les galetes són petits arxius de text que els llocs web emmagatzemen al dispositiu de l&apos;usuari (ordinador, tauleta o telèfon mòbil) quan hi navega. Serveixen per recordar informació sobre la visita, com les preferències d&apos;idioma, les pàgines visitades o les dades de sessió, facilitant la navegació i fent-la més útil.
             </p>
           </SectionBlock>
 
           {/* 02 */}
-          <SectionBlock num="02" title="Galetes que utilitzem">
+          <SectionBlock id="pc-utilitzem" num="02" title="Galetes que utilitzem">
             <div className="space-y-3">
               {cookieData.map((cookie) => (
                 <div key={cookie.name} className="bg-white/60 rounded-xl p-4 border border-[var(--color-primary)]/5">
@@ -123,7 +123,7 @@ export default async function PoliticaCookiesPage({ params }: Props) {
           </SectionBlock>
 
           {/* 03 */}
-          <SectionBlock num="03" title="Tipus de galetes segons la seva finalitat">
+          <SectionBlock id="pc-tipus" num="03" title="Tipus de galetes segons la seva finalitat">
             <div className="space-y-6">
               <div>
                 <div className="flex items-center gap-2 mb-3">
@@ -161,7 +161,7 @@ export default async function PoliticaCookiesPage({ params }: Props) {
           </SectionBlock>
 
           {/* 04 */}
-          <SectionBlock num="04" title="Transferències internacionals de dades">
+          <SectionBlock id="pc-transferencies" num="04" title="Transferències internacionals de dades">
             <div className="bg-[var(--color-accent)]/5 border border-[var(--color-accent)]/15 rounded-xl p-5">
               <p className="text-sm text-[var(--color-text-muted)] leading-relaxed">
                 Google Analytics pot transferir dades als servidors de Google als Estats Units. Aquestes transferències estan emparades per les{" "}
@@ -174,7 +174,7 @@ export default async function PoliticaCookiesPage({ params }: Props) {
           </SectionBlock>
 
           {/* 05 */}
-          <SectionBlock num="05" title="Com gestionar i desactivar les galetes">
+          <SectionBlock id="pc-gestionar" num="05" title="Com gestionar i desactivar les galetes">
             <p className="text-sm text-[var(--color-text-muted)] leading-relaxed mb-4">
               Podeu configurar el vostre navegador per acceptar, rebutjar o eliminar les galetes:
             </p>
@@ -209,21 +209,21 @@ export default async function PoliticaCookiesPage({ params }: Props) {
           </SectionBlock>
 
           {/* 06 */}
-          <SectionBlock num="06" title="Base jurídica">
+          <SectionBlock id="pc-base-juridica" num="06" title="Base jurídica">
             <p className="text-sm text-[var(--color-text-muted)] leading-relaxed">
               La base legal per a l&apos;ús de galetes analítiques és el <strong className="text-[var(--color-primary)]">consentiment</strong> de l&apos;usuari (art. 6.1.a RGPD i art. 22.2 de la Llei 34/2002 LSSI-CE).
             </p>
           </SectionBlock>
 
           {/* 07 */}
-          <SectionBlock num="07" title="Actualització d'aquesta política">
+          <SectionBlock id="pc-actualitzacio" num="07" title="Actualització d'aquesta política">
             <p className="text-sm text-[var(--color-text-muted)] leading-relaxed">
               GLLG es reserva el dret d&apos;actualitzar aquesta política en qualsevol moment per adaptar-la a canvis legislatius o tècnics. Es recomana revisar-la periòdicament.
             </p>
           </SectionBlock>
 
           {/* 08 */}
-          <SectionBlock num="08" title="Contacte">
+          <SectionBlock id="pc-contacte" num="08" title="Contacte">
             <p className="text-sm text-[var(--color-text-muted)] leading-relaxed mb-4">
               Per a qualsevol consulta relacionada amb les galetes o la privacitat:
             </p>

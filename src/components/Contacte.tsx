@@ -66,6 +66,12 @@ export default function Contacte() {
         throw new Error();
       }
       setStatus("success");
+      if (typeof window !== "undefined" && typeof window.gtag === "function") {
+        window.gtag("event", "form_submit_success", {
+          event_category: "conversion",
+          event_label: "contact_form",
+        });
+      }
       setFormData({ nom: "", cognom: "", email: "", empresa: "", telefon: "", missatge: "" });
       setAcceptPrivacy(false);
       setAcceptComms(false);
@@ -191,6 +197,11 @@ export default function Contacte() {
                 <div>
                   <label className="block text-sm font-medium text-[var(--color-text-dark)] mb-1.5">{t("formMissatge")} <span className="text-red-500">{t("formRequired")}</span></label>
                   <textarea name="missatge" value={formData.missatge} onChange={handleChange} required rows={4} maxLength={5000} className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[var(--color-accent)] focus:ring-2 focus:ring-[var(--color-accent)]/20 outline-none transition-all resize-none bg-[var(--color-bg-light)]/50 hover:bg-[var(--color-bg-light)] focus:bg-white" />
+                  <div className="flex justify-end mt-1.5">
+                    <span className={`text-xs tabular-nums transition-colors ${formData.missatge.length > 4500 ? "text-amber-500 font-medium" : formData.missatge.length > 4900 ? "text-red-500 font-semibold" : "text-[var(--color-text-muted)]/50"}`}>
+                      {formData.missatge.length.toLocaleString()} / 5.000
+                    </span>
+                  </div>
                 </div>
 
                 <div className="space-y-3">

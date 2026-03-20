@@ -6,9 +6,9 @@ import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 
 const slideData = [
-  { image: "/images/banner1-plano.jpeg", ctaHref: "/que-fem" as const },
-  { image: "/images/banner2-lleida.jpeg", ctaHref: "/presentacio" as const },
-  { image: "/images/banner3-eolics.jpeg", ctaHref: "/qui-som" as const },
+  { image: "/images/banner1-plano.jpeg", ctaHref: "/que-fem" as const, altKey: "slideAlt0" },
+  { image: "/images/banner2-lleida.jpeg", ctaHref: "/presentacio" as const, altKey: "slideAlt1" },
+  { image: "/images/banner3-eolics.jpeg", ctaHref: "/qui-som" as const, altKey: "slideAlt2" },
 ];
 
 export default function Hero() {
@@ -81,10 +81,17 @@ export default function Hero() {
     };
   }, [current, isPaused]);
 
-  // Reset progress on slide change
+  // Reset progress on slide change + track carousel interaction
   useEffect(() => {
     setProgress(0);
     progressOnPause.current = 0;
+    if (typeof window !== "undefined" && typeof window.gtag === "function" && current > 0) {
+      window.gtag("event", "carousel_slide", {
+        event_category: "engagement",
+        event_label: `Slide ${current + 1}`,
+        value: current + 1,
+      });
+    }
   }, [current]);
 
   useEffect(() => {
@@ -116,7 +123,7 @@ export default function Hero() {
     >
       {slideData.map((slide, i) => (
         <div key={slide.image} className={`absolute inset-0 transition-all duration-[1200ms] ease-in-out ${i === current ? "opacity-100 scale-100" : "opacity-0 scale-105"}`} aria-hidden={i !== current}>
-          <Image src={slide.image} alt="" fill className={`object-cover ${i === current ? "animate-ken-burns" : ""}`} priority={i === 0} sizes="100vw" quality={85} />
+          <Image src={slide.image} alt={t(slide.altKey)} fill className={`object-cover ${i === current ? "animate-ken-burns" : ""}`} priority={i === 0} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1920px" quality={85} />
         </div>
       ))}
 

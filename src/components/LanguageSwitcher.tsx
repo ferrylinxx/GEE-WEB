@@ -22,6 +22,14 @@ export default function LanguageSwitcher({
   const router = useRouter();
 
   const handleChange = (newLocale: string) => {
+    if (typeof window !== "undefined" && typeof window.gtag === "function") {
+      window.gtag("event", "language_switch", {
+        event_category: "engagement",
+        event_label: `${locale} → ${newLocale}`,
+        from_locale: locale,
+        to_locale: newLocale,
+      });
+    }
     router.replace(pathname, { locale: newLocale as "ca" | "es" | "en" });
   };
 

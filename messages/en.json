@@ -18,6 +18,9 @@
     "nextSlide": "Next slide",
     "slideLabel": "Slide {num}",
     "carouselLabel": "Services presentation",
+    "slideAlt0": "Urban planning map of industrial sectors and zones — Gabinet Estudis Econòmics",
+    "slideAlt1": "Aerial view of Plana de Lleida — territorial and economic impact studies",
+    "slideAlt2": "Wind farm with turbines — renewable energy and sustainable development projects",
     "slides": {
       "0": {
         "subtitle": "Strategic Analysis",

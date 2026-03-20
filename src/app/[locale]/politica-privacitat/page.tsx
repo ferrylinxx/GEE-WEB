@@ -39,16 +39,16 @@ function InfoCard({ label, value }: { label: string; value: React.ReactNode }) {
   );
 }
 
-function SectionBlock({ num, title, children }: { num: string; title: string; children: React.ReactNode }) {
+function SectionBlock({ id, num, title, children }: { id: string; num: string; title: string; children: React.ReactNode }) {
   return (
-    <section>
-      <div className="flex items-center gap-4 mb-5">
-        <span className="text-xs font-mono text-[var(--color-accent)]/60 bg-[var(--color-accent)]/8 w-9 h-9 rounded-xl flex items-center justify-center font-semibold">
+    <section id={id} className="scroll-mt-28">
+      <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-5">
+        <span className="text-xs font-mono text-[var(--color-accent)]/60 bg-[var(--color-accent)]/8 w-8 h-8 sm:w-9 sm:h-9 rounded-lg sm:rounded-xl flex items-center justify-center font-semibold shrink-0">
           {num}
         </span>
-        <h2 className="text-xl font-semibold text-[var(--color-primary)]">{title}</h2>
+        <h2 className="text-lg sm:text-xl font-semibold text-[var(--color-primary)]">{title}</h2>
       </div>
-      <div className="pl-[52px]">{children}</div>
+      <div className="pl-0 sm:pl-[48px]">{children}</div>
     </section>
   );
 }
@@ -101,7 +101,7 @@ export default async function PoliticaPrivacitatPage({ params }: Props) {
         <div className="mx-auto max-w-3xl px-6 lg:px-8 space-y-10">
 
           {/* 01 - Responsable */}
-          <SectionBlock num="01" title="Responsable del tractament">
+          <SectionBlock id="pp-responsable" num="01" title="Responsable del tractament">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <InfoCard label="Identitat" value="GLLG, S.L." />
               <InfoCard label="NIF" value="B05462338" />
@@ -121,7 +121,7 @@ export default async function PoliticaPrivacitatPage({ params }: Props) {
           </SectionBlock>
 
           {/* 02 - Finalitats */}
-          <SectionBlock num="02" title="Finalitats del tractament">
+          <SectionBlock id="pp-finalitats" num="02" title="Finalitats del tractament">
             <p className="text-[var(--color-text-muted)] leading-relaxed mb-4">
               A Gabinet Estudis Econòmics (GLLG) tractem les dades personals amb les següents finalitats:
             </p>
@@ -135,7 +135,7 @@ export default async function PoliticaPrivacitatPage({ params }: Props) {
           </SectionBlock>
 
           {/* 03 - Base jurídica */}
-          <SectionBlock num="03" title="Base jurídica del tractament">
+          <SectionBlock id="pp-base-juridica" num="03" title="Base jurídica del tractament">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {[
                 ["Consentiment", "Art. 6.1.a RGPD", "Consentiment atorgat mitjançant el formulari de contacte."],
@@ -155,7 +155,7 @@ export default async function PoliticaPrivacitatPage({ params }: Props) {
           </SectionBlock>
 
           {/* 04 - Dades */}
-          <SectionBlock num="04" title="Dades que recollim">
+          <SectionBlock id="pp-dades" num="04" title="Dades que recollim">
             <p className="text-[var(--color-text-muted)] text-sm leading-relaxed mb-4">
               A través del formulari de contacte recollim:
             </p>
@@ -178,7 +178,7 @@ export default async function PoliticaPrivacitatPage({ params }: Props) {
           </SectionBlock>
 
           {/* 05 - Conservació */}
-          <SectionBlock num="05" title="Conservació de les dades">
+          <SectionBlock id="pp-conservacio" num="05" title="Conservació de les dades">
             <div className="space-y-3">
               {[
                 ["Sol·licituds de contacte", "Durant el temps necessari per atendre la consulta i els terminis legals de prescripció."],
@@ -202,7 +202,7 @@ export default async function PoliticaPrivacitatPage({ params }: Props) {
           </SectionBlock>
 
           {/* 06 - Destinataris */}
-          <SectionBlock num="06" title="Destinataris de les dades">
+          <SectionBlock id="pp-destinataris" num="06" title="Destinataris de les dades">
             <p className="text-sm text-[var(--color-text-muted)] leading-relaxed mb-4">
               Les dades personals no se cediran a tercers, excepte:
             </p>
@@ -214,7 +214,7 @@ export default async function PoliticaPrivacitatPage({ params }: Props) {
           </SectionBlock>
 
           {/* 07 - Drets */}
-          <SectionBlock num="07" title="Drets de l'interessat">
+          <SectionBlock id="pp-drets" num="07" title="Drets de l'interessat">
             <p className="text-sm text-[var(--color-text-muted)] leading-relaxed mb-4">
               D&apos;acord amb el RGPD i la LOPDGDD, vostè té dret a:
             </p>
@@ -252,7 +252,7 @@ export default async function PoliticaPrivacitatPage({ params }: Props) {
           </SectionBlock>
 
           {/* 08 - Seguretat */}
-          <SectionBlock num="08" title="Mesures de seguretat">
+          <SectionBlock id="pp-seguretat" num="08" title="Mesures de seguretat">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {[
                 ["SSL/TLS", "Connexió xifrada mitjançant certificat HTTPS"],
@@ -274,7 +274,7 @@ export default async function PoliticaPrivacitatPage({ params }: Props) {
           </SectionBlock>
 
           {/* 09 - Cookies */}
-          <SectionBlock num="09" title="Galetes (Cookies)">
+          <SectionBlock id="pp-cookies" num="09" title="Galetes (Cookies)">
             <div className="bg-[var(--color-accent)]/5 border border-[var(--color-accent)]/15 rounded-xl p-5">
               <p className="text-sm text-[var(--color-text-muted)] leading-relaxed">
                 Aquest lloc web utilitza galetes pròpies i de tercers. Per a informació detallada, consulteu la nostra{" "}
@@ -286,7 +286,7 @@ export default async function PoliticaPrivacitatPage({ params }: Props) {
           </SectionBlock>
 
           {/* 10 - Modificacions */}
-          <SectionBlock num="10" title="Modificacions de la política">
+          <SectionBlock id="pp-modificacions" num="10" title="Modificacions de la política">
             <p className="text-sm text-[var(--color-text-muted)] leading-relaxed">
               GLLG es reserva el dret de modificar aquesta política de privacitat per adaptar-la a novetats legislatives o jurisprudencials. En cas de canvis significatius, s&apos;informarà els usuaris a través del lloc web.
             </p>

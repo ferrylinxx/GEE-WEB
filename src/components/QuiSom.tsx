@@ -40,8 +40,8 @@ export default function QuiSom() {
                     <div className="absolute top-4 right-4 w-8 h-8 border-t-2 border-r-2 border-[var(--color-accent)]/30 rounded-tr-lg" />
                   </div>
 
-                  <div className="flex-shrink-0 w-20 h-20 rounded-2xl bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-primary-dark)] flex items-center justify-center shadow-lg shadow-[var(--color-primary)]/20 group-hover:shadow-[var(--color-primary)]/30 transition-shadow duration-500">
-                    <span className="text-2xl font-bold text-white">{t(`team.${i}.initials`)}</span>
+                  <div className="flex-shrink-0 w-20 h-20 rounded-2xl bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-primary-dark)] flex items-center justify-center shadow-lg shadow-[var(--color-primary)]/20 group-hover:shadow-[var(--color-primary)]/30 transition-shadow duration-500" role="img" aria-label={t(`team.${i}.name`)}>
+                    <span className="text-2xl font-bold text-white" aria-hidden="true">{t(`team.${i}.initials`)}</span>
                   </div>
                   <div>
                     <h3 className="text-xl font-bold text-[var(--color-primary)]">{t(`team.${i}.name`)}</h3>

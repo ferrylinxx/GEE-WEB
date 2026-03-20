@@ -18,6 +18,9 @@
     "nextSlide": "Diapositiva siguiente",
     "slideLabel": "Diapositiva {num}",
     "carouselLabel": "Presentación de servicios",
+    "slideAlt0": "Plano urbanístico de sectores y polígonos industriales — Gabinet Estudis Econòmics",
+    "slideAlt1": "Vista aérea de la Plana de Lleida — estudios territoriales y de impacto económico",
+    "slideAlt2": "Parque eólico con molinos de viento — proyectos de energía renovable y desarrollo sostenible",
     "slides": {
       "0": {
         "subtitle": "Análisis Estratégico",
