@@ -1,4 +1,5 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import { routing } from "@/i18n/routing";
 import Navbar from "@/components/Navbar";
 import QueFem from "@/components/QueFem";
 import Footer from "@/components/Footer";
@@ -6,6 +7,10 @@ import Footer from "@/components/Footer";
 type Props = {
   params: Promise<{ locale: string }>;
 };
+
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
 
 export async function generateMetadata({ params }: Props) {
   const { locale } = await params;
