@@ -66,7 +66,7 @@
     "award3Title": "Despacho Profesional del año",
     "award3Desc": "Por el Colegio de Economistas de Cataluña (2008)",
     "ctaServices": "Qué hacemos",
-    "ctaContact": "Contáctenos"
+    "ctaContact": "Contáctanos"
   },
   "queFem": {
     "badge": "Servicios",
@@ -98,7 +98,7 @@
         "desc": "Métodos y sistemas adaptables a cada situación y ámbito territorial, con espíritu artesano."
       }
     },
-    "ctaContact": "Contáctenos",
+    "ctaContact": "Contáctanos",
     "ctaClients": "Clientes"
   },
   "quiSom": {
@@ -120,7 +120,7 @@
       "2": {
         "name": "Gemma Vélez Sabater",
         "role": "Analista",
-        "bio": "Trabaja en el Gabinete desde 1996. Diplomada en Ciencias Empresariales por la Universitat Pompeu Fabra. Licenciada en Administración y Dirección de Empresas por la Universitat Autònoma de Bellaterra.",
+        "bio": "Trabaja en el Gabinete desde 1996. Diplomada en Ciencias Empresariales por la Universitat Pompeu Fabra. Licenciada en Administración y Dirección de Empresas por la Universitat Autònoma de Barcelona.",
         "initials": "GV"
       },
       "3": {
@@ -134,11 +134,11 @@
   "clients": {
     "badge": "Para quién trabajamos",
     "title": "Clientes",
-    "heroText": "Nuestra independencia e imparcialidad nos permite trabajar tanto para instituciones públicas y privadas como para empresas.",
+    "heroText": "Nuestra independencia e imparcialidad nos permiten trabajar tanto para instituciones públicas y privadas como para empresas.",
     "features": {
       "0": {
         "title": "Independencia e Imparcialidad",
-        "desc": "Nuestra independencia e imparcialidad nos permite trabajar tanto para instituciones públicas y privadas como para empresas."
+        "desc": "Nuestra independencia e imparcialidad nos permiten trabajar tanto para instituciones públicas y privadas como para empresas."
       },
       "1": {
         "title": "Colaboraciones Profesionales",

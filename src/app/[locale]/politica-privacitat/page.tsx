@@ -97,7 +97,7 @@ export default async function PoliticaPrivacitatPage({ params }: Props) {
               Política de Privacitat
             </h1>
             <p className="text-white/50 text-sm">
-              Última actualització: 20 de març de 2026
+              Darrera actualització: 20 de març de 2026
             </p>
           </div>
         </div>

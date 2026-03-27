@@ -71,7 +71,7 @@
   "queFem": {
     "badge": "Serveis",
     "title": "Què fem",
-    "heroText": "El nostre objectiu és ajudar als nostres clients sempre amb la idea d'assessorar i acompanyar a la presa de decisions amb imparcialitat i de forma molt rigorosa, adaptant-nos a les necessitats específiques de cada encàrrec amb un servei a mida.",
+    "heroText": "El nostre objectiu és ajudar els nostres clients sempre amb la idea d'assessorar i acompanyar en la presa de decisions amb imparcialitat i de forma molt rigorosa, adaptant-nos a les necessitats específiques de cada encàrrec amb un servei a mida.",
     "services": {
       "0": {
         "title": "Anàlisi Estratègica",
@@ -114,19 +114,19 @@
       "1": {
         "name": "Àngels Garcia Hernández",
         "role": "Directora Tècnica Adjunta",
-        "bio": "Treballa al Gabinet des dels seus inicis l'any 1989. Arquitecta per l'Escola Tècnica Superior d'Arquitectura de Barcelona. Va iniciar la seva labor professional al despatx de l'arquitecte i professor de Projectes Arquitectònics de la ETSAB Joan Arias Roig, amb el que ha continuat col·laborant en diferents projectes d'arquitectura.",
+        "bio": "Treballa al Gabinet des dels seus inicis l'any 1989. Arquitecta per l'Escola Tècnica Superior d'Arquitectura de Barcelona. Va iniciar la seva labor professional al despatx de l'arquitecte i professor de Projectes Arquitectònics de la ETSAB Joan Arias Roig, amb el qual ha continuat col·laborant en diferents projectes d'arquitectura.",
         "initials": "ÀG"
       },
       "2": {
         "name": "Gemma Vélez Sabater",
         "role": "Analista",
-        "bio": "Treballa al Gabinet des de l'any 1996. Diplomada en Ciències Empresarials per la Universitat Pompeu Fabra. Llicenciada en Administració i Direcció d'Empreses per la Universitat Autònoma de Bellaterra.",
+        "bio": "Treballa al Gabinet des de l'any 1996. Diplomada en Ciències Empresarials per la Universitat Pompeu Fabra. Llicenciada en Administració i Direcció d'Empreses per la Universitat Autònoma de Barcelona.",
         "initials": "GV"
       },
       "3": {
         "name": "Bernat Arias",
         "role": "Consultor",
-        "bio": "Treballa al Gabinet des de l'any 2017. Llicenciat en Economia per la Universitat de Barcelona. Màster recerca, especialitat Història del pensament econòmic per la Universitat París 1 Panthéon-Sorbonne. Ha treballat al sector públic.",
+        "bio": "Treballa al Gabinet des de l'any 2017. Llicenciat en Economia per la Universitat de Barcelona. Màster de recerca, especialitat Història del pensament econòmic per la Universitat París 1 Panthéon-Sorbonne. Ha treballat al sector públic.",
         "initials": "BA"
       }
     }
@@ -134,11 +134,11 @@
   "clients": {
     "badge": "Per a qui treballem",
     "title": "Clients",
-    "heroText": "La nostra independència i imparcialitat ens permet treballar tant per a institucions públiques i privades, com per a empreses.",
+    "heroText": "La nostra independència i imparcialitat ens permeten treballar tant per a institucions públiques i privades, com per a empreses.",
     "features": {
       "0": {
         "title": "Independència i Imparcialitat",
-        "desc": "La nostra independència i imparcialitat ens permet treballar tant per a institucions públiques i privades, com per a empreses."
+        "desc": "La nostra independència i imparcialitat ens permeten treballar tant per a institucions públiques i privades, com per a empreses."
       },
       "1": {
         "title": "Col·laboracions Professionals",
@@ -177,7 +177,7 @@
     "successMsg": "Missatge enviat correctament! Ens posarem en contacte amb tu aviat.",
     "errorMsg": "Error enviant el missatge. Torna-ho a intentar o contacta'ns per telèfon.",
     "privacyCheckbox": "He llegit i accepto les condicions contingudes en la <link>Política de Privacitat</link> sobre el tractament de dades personals.",
-    "commsCheckbox": "Accepto rebre comunicacions de Gabinet Estudis Economics (GLLG) relacionada amb els nostres serveis",
+    "commsCheckbox": "Accepto rebre comunicacions de Gabinet Estudis Econòmics (GLLG) relacionades amb els nostres serveis",
     "submitBtn": "Enviar missatge",
     "sendingBtn": "Enviant...",
     "recaptchaNotice": "Aquest lloc està protegit per reCAPTCHA i s'apliquen la <privacy>Política de Privacitat</privacy> i els <terms>Termes de Servei</terms> de Google."
