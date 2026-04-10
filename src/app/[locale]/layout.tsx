@@ -9,7 +9,6 @@ import ScrollToTop from "@/components/ScrollToTop";
 import ScrollReset from "@/components/ScrollReset";
 import Script from "next/script";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
-import { Analytics } from "@vercel/analytics/next";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -101,7 +100,7 @@ export async function generateMetadata({
       description: t("homeDescription"),
       images: [
         {
-          url: `${siteUrl}/${locale}/opengraph-image`,
+          url: `${siteUrl}/og-image.png`,
           width: 1200,
           height: 630,
           alt: "Gabinet Estudis Econòmics",
@@ -112,7 +111,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: "Gabinet Estudis Econòmics",
       description: t("homeDescription"),
-      images: [`${siteUrl}/${locale}/opengraph-image`],
+      images: [`${siteUrl}/og-image.png`],
     },
     robots: {
       index: true,
@@ -195,7 +194,7 @@ export default async function LocaleLayout({ children, params }: Props) {
     alternateName: "GEE",
     url: siteUrl,
     logo: `${siteUrl}/logo.png`,
-    image: `${siteUrl}/ca/opengraph-image`,
+    image: `${siteUrl}/og-image.png`,
     description:
       "Consultoria econòmica especialitzada en anàlisi estratègica, impacte econòmic, avaluació urbanística i dictàmens pericials a Barcelona des de 1989.",
     telephone: "+34932119744",
@@ -348,7 +347,6 @@ export default async function LocaleLayout({ children, params }: Props) {
           <ScrollToTop />
         </NextIntlClientProvider>
         <GoogleAnalytics />
-        <Analytics />
         <Script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6269718356198501"
