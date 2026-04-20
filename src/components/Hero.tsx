@@ -15,12 +15,10 @@ export default function Hero() {
   const t = useTranslations("hero");
   const [current, setCurrent] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
-  const [isPaused, setIsPaused] = useState(false);
   const [progress, setProgress] = useState(0);
   const [hasLoaded, setHasLoaded] = useState(false);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const progressRef = useRef<ReturnType<typeof setInterval> | null>(null);
-  const progressOnPause = useRef(0);
   const SLIDE_DURATION = 7000;
   const PROGRESS_INTERVAL = 30;
 
@@ -35,7 +33,6 @@ export default function Hero() {
       if (isTransitioning || index === current) return;
       setIsTransitioning(true);
       setProgress(0);
-      progressOnPause.current = 0;
       setTimeout(() => {
         setCurrent(index);
         setTimeout(() => setIsTransitioning(false), 100);
@@ -54,22 +51,16 @@ export default function Hero() {
 
   // Auto-play timer
   useEffect(() => {
-    if (isPaused) return;
-    const remaining = SLIDE_DURATION * (1 - progressOnPause.current / 100);
     timerRef.current = setTimeout(() => {
       nextSlide();
-    }, remaining);
+    }, SLIDE_DURATION);
     return () => {
       if (timerRef.current) clearTimeout(timerRef.current as ReturnType<typeof setTimeout>);
     };
-  }, [nextSlide, isPaused, current]);
+  }, [nextSlide, current]);
 
-  // Progress bar — synced with pause/resume
+  // Progress bar
   useEffect(() => {
-    if (isPaused) {
-      progressOnPause.current = progress;
-      return;
-    }
     progressRef.current = setInterval(() => {
       setProgress((prev) => {
         const next = prev + (PROGRESS_INTERVAL / SLIDE_DURATION) * 100;
@@ -79,12 +70,11 @@ export default function Hero() {
     return () => {
       if (progressRef.current) clearInterval(progressRef.current);
     };
-  }, [current, isPaused]);
+  }, [current]);
 
   // Reset progress on slide change + track carousel interaction
   useEffect(() => {
     setProgress(0);
-    progressOnPause.current = 0;
     if (typeof window !== "undefined" && typeof window.gtag === "function" && current > 0) {
       window.gtag("event", "carousel_slide", {
         event_category: "engagement",
@@ -114,8 +104,6 @@ export default function Hero() {
     <section
       id="inici"
       className="relative h-screen flex items-center overflow-hidden"
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
       aria-roledescription="carousel"
@@ -185,10 +173,10 @@ export default function Hero() {
         </div>
       </div>
 
-      <button onClick={prevSlide} className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 flex items-center justify-center rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 transition-all duration-300" style={{ opacity: isPaused ? 0.8 : 0 }} aria-label={t("prevSlide")}>
+      <button onClick={prevSlide} className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 flex items-center justify-center rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white opacity-60 hover:opacity-100 hover:bg-white/20 transition-all duration-300" aria-label={t("prevSlide")}>
         <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" /></svg>
       </button>
-      <button onClick={nextSlide} className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 flex items-center justify-center rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 transition-all duration-300" style={{ opacity: isPaused ? 0.8 : 0 }} aria-label={t("nextSlide")}>
+      <button onClick={nextSlide} className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 flex items-center justify-center rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white opacity-60 hover:opacity-100 hover:bg-white/20 transition-all duration-300" aria-label={t("nextSlide")}>
         <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
       </button>
 
@@ -204,12 +192,6 @@ export default function Hero() {
               </button>
             ))}
           </div>
-          {/* Indicador pausa */}
-          {isPaused && (
-            <div className="flex items-center gap-1.5 text-white/40 text-xs uppercase tracking-widest mr-4">
-              <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z" /></svg>
-            </div>
-          )}
           <div className="hidden sm:flex items-center gap-3 text-white/50 text-sm font-mono">
             <span className="text-2xl font-bold text-white tabular-nums">{String(current + 1).padStart(2, "0")}</span>
             <span className="w-8 h-px bg-white/30" />
