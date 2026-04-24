@@ -136,13 +136,13 @@ export default function Hero() {
             {/* Título con animación reveal línea por línea */}
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 tracking-tight leading-[0.9]">
               <span className={`block transition-all duration-700 ${hasLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-                {t("title1")}
+                GABINET
               </span>
               <span className={`block text-[var(--color-accent)] drop-shadow-[0_2px_10px_rgba(200,169,110,0.3)] transition-all duration-700 delay-200 ${hasLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-                {t("title2")}
+                ESTUDIS
               </span>
               <span className={`block transition-all duration-700 delay-[400ms] ${hasLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-                {t("title3")}
+                ECONÒMICS
               </span>
             </h1>
 
