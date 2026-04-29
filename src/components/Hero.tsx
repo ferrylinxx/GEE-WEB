@@ -6,7 +6,7 @@ import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 
 const slideData = [
-  { image: "/images/banner1-plano.jpeg", ctaHref: "/que-fem" as const, altKey: "slideAlt0" },
+  { image: "/images/banner1-plano-v2.jpeg", ctaHref: "/que-fem" as const, altKey: "slideAlt0" },
   { image: "/images/banner2-lleida.jpeg", ctaHref: "/presentacio" as const, altKey: "slideAlt1" },
   { image: "/images/banner3-eolics.jpeg", ctaHref: "/qui-som" as const, altKey: "slideAlt2" },
 ];
