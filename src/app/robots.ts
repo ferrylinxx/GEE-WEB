@@ -6,15 +6,11 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/api/", "/_next/", "/icon.png"],
-      },
-      {
-        userAgent: "GPTBot",
-        disallow: ["/"],
-      },
-      {
-        userAgent: "CCBot",
-        disallow: ["/"],
+        disallow: [
+          "/*?v=",
+          "/api/",
+          "/_next/",
+        ],
       },
     ],
     sitemap: "https://geeconomics.com/sitemap.xml",
