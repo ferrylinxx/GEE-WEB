@@ -7,7 +7,6 @@ import { routing } from "@/i18n/routing";
 import "../globals.css";
 import ScrollToTop from "@/components/ScrollToTop";
 import ScrollReset from "@/components/ScrollReset";
-import Script from "next/script";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 
 const inter = Inter({
@@ -44,41 +43,57 @@ export async function generateMetadata({
     keywords:
       locale === "es"
         ? [
-            "consultoría económica",
-            "estudios económicos",
-            "análisis estratégico",
-            "impacto económico",
-            "evaluación urbanística",
-            "dictámenes periciales",
+            "consultoría económica Barcelona",
+            "estudio impacto económico",
+            "dictamen pericial económico",
+            "análisis estratégico territorial",
+            "evaluación urbanística Catalunya",
+            "estudio de viabilidad económica",
+            "valoración de intangibles",
+            "consultoría urbanística Barcelona",
+            "plan especial urbanístico",
+            "análisis socioeconómico",
+            "informe pericial económico",
+            "consultoría sector público Catalunya",
+            "GLLG",
+            "Gabinete Estudios Económicos",
             "Barcelona",
             "Cataluña",
-            "GEE",
-            "Gabinete Estudios Económicos",
           ]
         : locale === "en"
           ? [
-              "economic consulting",
-              "economic studies",
-              "strategic analysis",
-              "economic impact",
-              "urban evaluation",
-              "expert reports",
+              "economic consulting Barcelona",
+              "economic impact study",
+              "expert economic report",
+              "strategic territorial analysis",
+              "urban planning evaluation Catalonia",
+              "economic feasibility study",
+              "intangible asset valuation",
+              "socioeconomic analysis",
+              "public sector consulting Spain",
+              "urban development economics",
+              "GLLG",
+              "Gabinet Estudis Econòmics",
               "Barcelona",
               "Catalonia",
-              "Spain",
-              "GEE",
             ]
           : [
-              "consultoria econòmica",
-              "estudis econòmics",
-              "anàlisi estratègica",
-              "impacte econòmic",
-              "avaluació urbanística",
-              "dictàmens pericials",
+              "consultoria econòmica Barcelona",
+              "estudi d'impacte econòmic",
+              "dictamen pericial econòmic",
+              "anàlisi estratègica territorial",
+              "avaluació urbanística Catalunya",
+              "estudi de viabilitat econòmica",
+              "valoració d'intangibles",
+              "consultoria urbanística Barcelona",
+              "pla especial urbanístic",
+              "anàlisi socioeconòmica",
+              "informe pericial econòmic",
+              "consultoria sector públic Catalunya",
+              "GLLG",
+              "Gabinet Estudis Econòmics",
               "Barcelona",
               "Catalunya",
-              "GEE",
-              "Gabinet Estudis Econòmics",
             ],
     authors: [{ name: "Gabinet Estudis Econòmics" }],
     creator: "Gabinet Estudis Econòmics",
@@ -347,12 +362,6 @@ export default async function LocaleLayout({ children, params }: Props) {
           <ScrollToTop />
         </NextIntlClientProvider>
         <GoogleAnalytics />
-        <Script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6269718356198501"
-          crossOrigin="anonymous"
-          strategy="afterInteractive"
-        />
       </body>
     </html>
   );
